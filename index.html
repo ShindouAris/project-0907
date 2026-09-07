@@ -1,283 +1,54 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio cá nhân của Thanh Nam - Sinh viên lập trình thích vọc vạch công nghệ, xây dựng sản phẩm thực tế và tìm hiểu cơ chế hoạt động của hệ thống.">
-  <title>Thanh Nam | Developer Portfolio &amp; Playground</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bản sắc cá nhân</title>
 </head>
 <body>
+	<!-- Header: phần đầu trang, chứa thông tin nhận diện -->
+	<header>
+		<h1>Mạc Minh Hải</h1>
 
-  <!--
-    ============================================================================
-    HEADER:
-    - Đại diện cho phần mở đầu của trang web hoặc một phân vùng nội dung.
-    - Dùng để nhóm các thành phần định danh thương hiệu (branding), logo, tên tác
-      giả, câu slogan và thanh điều hướng chính của toàn trang.
-    - Nội dung phù hợp: Logo, tiêu đề chính <h1>, thông tin giới thiệu ngắn, và <nav>.
-    ============================================================================
-  -->
-  <header>
-    <h1>Thanh Nam (ShindouAris)</h1>
-    <p>Sinh viên công nghệ thích vọc vạch hệ thống, xây dựng công cụ thực tế và mày mò cách mọi thứ vận hành "under the hood".</p>
+		<!-- Nav: khu vực điều hướng chính của website -->
+		<nav>
+			<ul>
+				<li><a href="#gioi-thieu">Giới thiệu</a></li>
+				<li><a href="#ky-nang">Kỹ năng</a></li>
+				<li><a href="#muc-tieu">Mục tiêu</a></li>
+			</ul>
+		</nav>
+	</header>
 
-    <!--
-      ==========================================================================
-      NAV:
-      - Đại diện cho khu vực điều hướng (Navigation), chứa danh sách các liên kết
-        chính dẫn đến các phân vùng quan trọng trong trang web hoặc các trang khác.
-      - Dùng thẻ này giúp các công cụ tìm kiếm (SEO) và trình đọc màn hình cho
-        người khiếm thị (Screen Reader) nhận diện nhanh thanh menu chính.
-      - Nội dung phù hợp: Danh sách liên kết nội bộ (anchor links) hoặc liên kết
-        chuyển trang, thường được bọc trong danh sách <ul> hoặc <ol>.
-      ==========================================================================
-    -->
-    <nav aria-label="Điều hướng chính">
-      <ul>
-        <li><a href="#hero">Trang chủ</a></li>
-        <li><a href="#about">Về mình</a></li>
-        <li><a href="#skills">Kỹ năng</a></li>
-        <li><a href="#projects">Dự án</a></li>
-        <li><a href="#contact">Liên hệ</a></li>
-      </ul>
-    </nav>
-  </header>
+	<!-- Main: nội dung chính của trang -->
+	<main>
+		<!-- Section: một chủ đề nội dung riêng -->
+		<section id="gioi-thieu">
+			<h2>Giới thiệu bản thân</h2>
+			<p>Tôi là người yêu thích sáng tạo, học hỏi và xây dựng những sản phẩm hữu ích.</p>
+		</section>
 
-  <!--
-    ============================================================================
-    MAIN:
-    - Đại diện cho khối nội dung chính và quan trọng nhất của tài liệu HTML.
-    - Mỗi trang HTML hợp lệ chỉ được phép có DUY NHẤT một thẻ <main> hiển thị.
-      Thẻ này không được lặp lại và không được chứa các thành phần lặp đi lặp lại
-      ở nhiều trang (như banner header, footer, thanh điều hướng toàn trang).
-    - Giúp trình duyệt và công cụ hỗ trợ người dùng có thể nhảy thẳng vào nội dung
-      cốt lõi mà không cần duyệt qua các menu rườm rà.
-    - Nội dung phù hợp: Các phần giới thiệu, bài viết, danh sách dự án, form liên hệ.
-    ============================================================================
-  -->
-  <main>
+		<!-- Section: một chủ đề nội dung riêng -->
+		<section id="ky-nang">
+			<h2>Kỹ năng</h2>
+			<ul>
+				<li>HTML cơ bản</li>
+				<li>Giao tiếp và làm việc nhóm</li>
+				<li>Tư duy giải quyết vấn đề</li>
+			</ul>
+		</section>
 
-    <!--
-      ==========================================================================
-      SECTION (Hero / Giới thiệu tổng quan):
-      - Thẻ <section> đại diện cho một phân vùng nội dung độc lập theo một chủ đề
-        cụ thể trong trang web.
-      - Luôn luôn nên đi kèm với một tiêu đề (heading <h1> - <h6>) để định danh
-        chủ đề của phân vùng đó. Dùng <section> thay cho <div> vô nghĩa giúp mã
-        nguồn mạch lạc và chuẩn hóa ngữ nghĩa HTML5.
-      - Nội dung phù hợp: Lời chào mở đầu, định vị bản thân, thông điệp cá nhân
-        hoặc nút kêu gọi hành động (Call To Action).
-      ==========================================================================
-    -->
-    <section id="hero">
-      <h2>Xin chào anh em, mình là một Builder thích thực chiến! 🚀</h2>
-      <p>
-        Mình là sinh viên năm 3 ngành Công nghệ Thông tin. Thay vì chạy theo các thuật ngữ hào nhoáng
-        hay các framework phức tạp khi chưa cần thiết, mình tập trung vào việc hiểu sâu bản chất:
-        cách mạng máy tính truyền gói tin, cách trình duyệt render DOM, và cách biến một ý tưởng
-        thành một công cụ chạy ổn định.
-      </p>
-      <p>
-        <strong>Trạng thái hiện tại:</strong> Đang tìm kiếm cơ hội thực tập, vừa học vừa build các
-        CLI tool nhỏ phục vụ công việc hàng ngày.
-      </p>
-    </section>
+		<!-- Section: một chủ đề nội dung riêng -->
+		<section id="muc-tieu">
+			<h2>Mục tiêu</h2>
+			<p>Tôi muốn phát triển một website cá nhân để chia sẻ dự án và hành trình học tập.</p>
+		</section>
+	</main>
 
-    <!--
-      ==========================================================================
-      SECTION (About Me / Giới thiệu chi tiết):
-      - Phân vùng chứa câu chuyện cá nhân, tư duy lập trình và hành trình học hỏi.
-      - Dùng để tách biệt phần tiểu sử tác giả thành một cụm ngữ nghĩa rõ ràng,
-        giúp người đọc nắm được bối cảnh, tính cách và định hướng của developer.
-      - Nội dung phù hợp: Các đoạn văn mô tả xuất phát điểm, triết lý viết code,
-        thói quen làm việc và mục tiêu phát triển.
-      ==========================================================================
-    -->
-    <section id="about">
-      <h2>Về bản thân &amp; Triết lý lập trình</h2>
-      <p>
-        Hành trình của mình bắt đầu từ sự tò mò muốn biết cái gì thực sự xảy ra sau khi mình nhấn nút
-        Enter trên trình duyệt. Mình từng thử cài Linux, vô tình làm hỏng bootloader vài lần, tự sửa
-        router ở phòng trọ và viết script tự động tải bài giảng. Những lần "nghịch dại" đó dạy mình
-        nhiều hơn bất kỳ slide lý thuyết suông nào.
-      </p>
-
-      <h3>Phong cách làm việc của mình:</h3>
-      <ul>
-        <li>
-          <strong>Thực tế là ưu tiên số một:</strong> Không overengineering. Giải pháp đơn giản,
-          dễ đọc, dễ debug luôn tốt hơn cấu trúc phức tạp nhưng khó bảo trì.
-        </li>
-        <li>
-          <strong>Học bằng cách bắt tay làm (Learn by building):</strong> Đọc tài liệu, viết thử nghiệm nhỏ,
-          làm vỡ nó ra xem lỗi ở đâu rồi tối ưu lại.
-        </li>
-        <li>
-          <strong>Yêu thích Terminal &amp; Công cụ tối giản:</strong> Thích làm việc với dòng lệnh,
-          hiểu cấu trúc file, git workflow và tự viết script tự động hóa những việc lặp đi lặp lại.
-        </li>
-      </ul>
-    </section>
-
-    <!--
-      ==========================================================================
-      SECTION (Skills / Bộ kỹ năng & Công nghệ):
-      - Phân vùng liệt kê các kỹ năng kỹ thuật, công nghệ và công cụ lập trình.
-      - Giúp phân nhóm rành mạch giữa các mảng kỹ năng khác nhau, tạo điều kiện
-        cho nhà tuyển dụng hoặc cộng tác viên đánh giá chuyên môn nhanh chóng.
-      - Nội dung phù hợp: Danh sách ngôn ngữ, công cụ, giao thức mạng, hệ điều hành.
-      ==========================================================================
-    -->
-    <section id="skills">
-      <h2>Công nghệ &amp; Hộp đồ nghề kỹ thuật</h2>
-      <p>Những công nghệ mình dùng thường xuyên để thí nghiệm và làm dự án:</p>
-
-      <h3>1. Nền tảng cốt lõi</h3>
-      <ul>
-        <li>HTML5 Semantic (Viết code đúng chuẩn ngữ nghĩa, tối ưu khả năng truy cập và SEO).</li>
-        <li>CSS3 (Nắm vững Box Model, Flexbox, Responsive Web Design cơ bản).</li>
-        <li>JavaScript (ES6+, DOM API thuần, Async/Await, xử lý bất đồng bộ).</li>
-      </ul>
-
-      <h3>2. Ngôn ngữ &amp; Backend thực chiến</h3>
-      <ul>
-        <li>Python (Viết script tự động hóa, xử lý dữ liệu và web scraping).</li>
-        <li>Node.js / Express (Xây dựng RESTful API đơn giản, nhẹ nhàng).</li>
-        <li>Golang (Đang học và ứng dụng để viết các công cụ dòng lệnh tốc độ cao).</li>
-        <li>SQL &amp; SQLite / PostgreSQL (Thiết kế bảng, quan hệ dữ liệu và viết truy vấn tối ưu).</li>
-      </ul>
-
-      <h3>3. Môi trường &amp; Công cụ hàng ngày</h3>
-      <ul>
-        <li>Hệ điều hành: Linux (Ubuntu / Arch), Windows Terminal (PowerShell / WSL2).</li>
-        <li>Quản lý phiên bản: Git, GitHub (Commit atomic, phân nhánh rõ ràng).</li>
-        <li>Docker cơ bản (Đóng gói ứng dụng để chạy nhất quán mọi nơi).</li>
-      </ul>
-    </section>
-
-    <!--
-      ==========================================================================
-      SECTION (Projects / Dự án nổi bật):
-      - Phân vùng chứa danh sách các sản phẩm, ứng dụng hoặc thử nghiệm thực tế.
-      - Sử dụng thẻ <article> bên trong để định danh từng dự án như một thực thể
-        độc lập, có thể đứng riêng rẽ mà vẫn đầy đủ thông tin.
-      - Nội dung phù hợp: Mỗi dự án bao gồm tên, mục tiêu giải quyết, công nghệ,
-        hình ảnh minh họa (<figure>) và liên kết mã nguồn.
-      ==========================================================================
-    -->
-    <section id="projects">
-      <h2>Dự án cá nhân đã hoàn thiện</h2>
-      <p>Dưới đây là một số món đồ chơi công nghệ và công cụ thực tế mình tự thiết kế và xây dựng:</p>
-
-      <!--
-        ========================================================================
-        ARTICLE:
-        - Đại diện cho một khối nội dung độc lập, hoàn chỉnh và có ý nghĩa tự thân
-          (self-contained). Khối này có thể được trích xuất hoặc tái sử dụng ở nơi
-          khác (như RSS feed, bài viết tổng hợp) mà không mất đi ngữ cảnh.
-        - Mỗi dự án trong portfolio là một đại diện tiêu biểu cho thẻ <article>.
-        - Nội dung phù hợp: Tiêu đề dự án, mô tả bài toán, cách giải quyết, công
-          nghệ áp dụng và liên kết kiểm chứng.
-        ========================================================================
-      -->
-      <article>
-        <h3>HUD cảnh báo tốc độ Waze</h3>
-        <p>
-          <strong>Vấn đề:</strong> Khi lái xe trên đường, việc liên tục phải cúi xuống nhìn màn hình điện thoại
-          để canh camera phạt nguội và biển giới hạn tốc độ từ Waze rất dễ làm phân tâm, nguy hiểm và chói mắt dưới trời nắng.
-        </p>
-        <p>
-          <strong>Giải pháp:</strong> Chế tạo thiết bị hiển thị kính lái HUD (Head-Up Display) viết bằng C++.
-          Thiết bị kết nối và đồng bộ dữ liệu tốc độ thời gian thực, vị trí camera giám sát từ Waze để phản chiếu
-          trực tiếp lên kính lái, đồng thời kích hoạt buzzer phát tín hiệu cảnh báo tức thì khi chạy quá tốc độ quy định.
-        </p>
-
-        <!--
-          ======================================================================
-          FIGURE & FIGCAPTION:
-          - <figure> đóng gói các nội dung minh họa độc lập (hình ảnh, biểu đồ, sơ đồ mã).
-          - <figcaption> cung cấp lời chú thích ngữ nghĩa đi liền với nội dung đó.
-          - Trình duyệt và công cụ tìm kiếm hiểu được hình ảnh và chú thích là một thể thống nhất.
-          ======================================================================
-        -->
-        <figure>
-          <img src="assets/HUD.png" alt="Màn hình HUD phản chiếu thông số tốc độ hiện tại và biểu tượng cảnh báo camera Waze lên kính lái">
-          <figcaption>Hình 1: Thiết bị HUD hiển thị tốc độ thực tế và cảnh báo camera từ Waze.</figcaption>
-        </figure>
-
-        <p><strong>Công nghệ sử dụng:</strong> C++, Embedded Systems, Bluetooth BLE, Waze Integration.</p>
-        <p>
-          <a href="https://github.com/ShindouAris/WazeHUD" target="_blank" rel="noopener noreferrer">Xem mã nguồn trên GitHub</a>
-        </p>
-      </article>
-
-      <article>
-        <h3>WazeMod - Ứng dụng cảnh báo giao thông [MOD]</h3>
-        <p>
-          <strong>Vấn đề:</strong> Ứng dụng Waze chính thức không có tính năng cảnh báo tốc độ
-          và các sự kiện giao thông theo thời gian thực trên màn hình HUD (Head-Up Display).
-        </p>
-        <figure>
-          <img src="assets/wazemod_page.png" alt="Giao diện ứng dụng WazeMod với các tính năng cảnh báo giao thông">
-          <figcaption>Hình 3: Bản mẫu trang web WazeMod.</figcaption>
-        </figure>
-        <p><strong>Công nghệ sử dụng:</strong> React, Next.js.</p>
-        <p>
-          <a href="https://wazemod.io.vn" target="_blank" rel="noopener noreferrer">Xem trang web chính thức</a>
-        </p>
-      </article>
-    </section>
-
-    <!--
-      ==========================================================================
-      SECTION (Contact / Kết nối & Liên hệ):
-      - Phân vùng cung cấp các kênh thông tin để người xem liên lạc, trao đổi
-        công việc hoặc thảo luận kỹ thuật.
-      - Dùng để xác định rõ ràng nơi tiếp nhận thông tin kết nối của website.
-      - Nội dung phù hợp: Lời mời kết nối, địa chỉ email, trang cá nhân và thẻ <address>.
-      ==========================================================================
-    -->
-    <section id="contact">
-      <h2>Kết nối với mình</h2>
-      <p>
-        Mình luôn hào hứng trao đổi về các dự án open-source thú vị, ý tưởng phần mềm hữu ích,
-        hoặc cơ hội thực tập, việc làm kỹ thuật. Đừng ngần ngại nhắn cho mình một câu nhé!
-      </p>
-
-      <!--
-        ========================================================================
-        ADDRESS:
-        - Đại diện cho thông tin liên hệ của tác giả/chủ sở hữu tài liệu hoặc bài viết.
-        - Trình duyệt và robot tìm kiếm sử dụng thẻ này để định vị email, hotline,
-          địa chỉ thực hoặc link profile chính thức của tác giả.
-        - Lưu ý: Không dùng <address> cho các địa chỉ tùy tiện không liên quan đến
-          tác giả của trang.
-        ========================================================================
-      -->
-      <address>
-        <p><strong>Email:</strong> <a href="mailto:tranthanhnam.ccc@gmail.com">tranthanhnam.ccc@gmail.com</a></p>
-        <p><strong>GitHub:</strong> <a href="https://github.com/ShindouAris" target="_blank" rel="noopener noreferrer">github.com/ShindouAris</a></p>
-        <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/kadin-tran-a3663b393" target="_blank" rel="noopener noreferrer">linkedin.com/in/kadin-tran-a3663b393</a></p>
-        <p><strong>Khu vực:</strong> Đồng Nai, Việt Nam (Sẵn sàng làm việc Onsite hoặc Remote)</p>
-      </address>
-    </section>
-
-  </main>
-
-  <!--
-    ============================================================================
-    FOOTER:
-    - Đại diện cho phần chân trang của toàn bộ website hoặc của một phân vùng.
-    - Dùng để chứa thông tin kết thúc trang: bản quyền tác giả, điều khoản, năm
-      phát hành, các liên kết phụ hoặc ghi chú kỹ thuật.
-    - Nội dung phù hợp: Thông báo Copyright (&copy;), năm xuất bản, tri ân,
-      ghi chú về công nghệ xây dựng trang.
-    ============================================================================
-  -->
-  <footer>
-    <p>&copy; 2026 Thanh Nam. Dự án khởi tạo bằng Semantic HTML5 thuần.</p>
-    <p><a href="#hero">Lên đầu trang &uarr;</a></p>
-  </footer>
-
+	<!-- Footer: phần cuối trang, chứa liên hệ và bản quyền -->
+	<footer>
+		<p>Liên hệ: 01234556789</p>
+		<p>&copy; 2026 Mạc Minh Hải</p>
+	</footer>
 </body>
 </html>
