@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Trang cá nhân</title>
+</head>
+<body>
+
+    <!-- 
+        HEADER: Khối đầu trang, chứa logo/tên và menu điều hướng (nav).
+        Đây là phần cố định giúp người dùng nhận diện trang web và di chuyển 
+        nhanh giữa các phần nội dung khác nhau.
+    -->
+    <header>
+        <h1>Nguyễn Văn A</h1>
+        <p>Front-end Developer</p>
+
+        <!-- 
+            NAV: Khối điều hướng chính, chứa các liên kết (anchor) 
+            trỏ tới từng section trong trang (dùng id để neo #about, #projects, #contact).
+        -->
+        <nav>
+            <ul>
+                <li><a href="#about">Giới thiệu</a></li>
+                <li><a href="#projects">Dự án</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 
+        MAIN: Khối nội dung chính của trang, chỉ nên xuất hiện MỘT LẦN duy nhất 
+        trong toàn bộ tài liệu. Chứa các section liên quan trực tiếp tới 
+        nội dung cốt lõi (không bao gồm header/footer/sidebar).
+    -->
+    <main>
+
+        <!-- 
+            SECTION 1 - ABOUT: Giới thiệu bản thân, kỹ năng, mục tiêu nghề nghiệp.
+        -->
+        <section id="about">
+            <h2>Giới thiệu bản thân</h2>
+            <p>
+                Tôi là một lập trình viên front-end đam mê tạo ra những giao diện 
+                web đẹp, thân thiện và tối ưu trải nghiệm người dùng. 
+                Tôi có kinh nghiệm làm việc với HTML, CSS và các nguyên tắc thiết kế web hiện đại.
+            </p>
+        </section>
+
+        <!-- 
+            SECTION 2 - PROJECTS: Danh sách các dự án tiêu biểu đã thực hiện, 
+            mỗi dự án là một khối article vì đây là nội dung độc lập, 
+            có thể tách ra và vẫn có ý nghĩa riêng.
+        -->
+        <section id="projects">
+            <h2>Dự án nổi bật</h2>
+
+            <article>
+                <h3>Website bán hàng thời trang</h3>
+                <p>Xây dựng giao diện trang chủ, danh mục sản phẩm và trang chi tiết sản phẩm.</p>
+            </article>
+
+            <article>
+                <h3>Landing page giới thiệu sản phẩm</h3>
+                <p>Thiết kế trang giới thiệu sản phẩm công nghệ với hiệu ứng cuộn mượt mà.</p>
+            </article>
+
+            <article>
+                <h3>Blog cá nhân</h3>
+                <p>Xây dựng cấu trúc trang blog chia sẻ kiến thức lập trình.</p>
+            </article>
+        </section>
+
+        <!-- 
+            SECTION 3 - CONTACT: Thông tin liên hệ, giúp người xem 
+            biết cách kết nối với chủ sở hữu portfolio.
+        -->
+        <section id="contact">
+            <h2>Liên hệ</h2>
+            <address>
+                Email: <a href="mailto:vanA@example.com">vanA@example.com</a><br>
+                Điện thoại: 0909 xxx xxx<br>
+                Địa chỉ: TP. Biên Hòa, Đồng Nai, Việt Nam
+            </address>
+        </section>
+
+    </main>
+
+    <!-- 
+        FOOTER: Khối cuối trang, chứa thông tin bản quyền, liên kết mạng xã hội 
+        hoặc các thông tin phụ khác. Xuất hiện ở mọi trang trong cùng một website.
+    -->
+    <footer>
+        <p>&copy; 2026 Nguyễn Văn A. Bảo lưu mọi quyền.</p>
+    </footer>
+
+</body>
+</html>
