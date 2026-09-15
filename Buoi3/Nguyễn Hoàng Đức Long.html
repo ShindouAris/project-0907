@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Nguyễn Hoàng Đức Long</title>
+    <!-- Google Fonts Preconnect & Stylesheet -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Liên kết file CSS tùy chỉnh -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Mạng lưới hạt vi mạch công nghệ cao & tia quét laser HUD -->
+    <canvas id="tech-canvas"></canvas>
+    <div class="tech-scanner"></div>
+
+    <!-- ========================================== -->
+    <!-- HEADER: Khối đầu trang, chứa thương hiệu và điều hướng -->
+    <!-- ========================================== -->
+    <header>
+        <div class="logo">
+            <h1>Long.Dev</h1>
+        </div>
+        <!-- Thẻ nav: Điều hướng các phần trong trang Portfolio -->
+        <nav>
+            <ul>
+                <li><a href="#about">Giới thiệu</a></li>
+                <li><a href="#skills">Kỹ năng</a></li>
+                <li><a href="#projects">Dự án</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- MAIN: Khối nội dung chính của trang Portfolio -->
+    <!-- ========================================== -->
+    <main>
+
+        <!-- Section 1: Giới thiệu bản thân -->
+        <section id="about">
+            <h2>Giới Thiệu Bản Thân</h2>
+            <p>Xin chào! Tôi là <strong>Nguyễn Hoàng Đức Long</strong>, một sinh viên đam mê công nghệ, phát triển phần mềm và quản trị cơ sở dữ liệu. Tôi luôn không ngừng học hỏi và xây dựng các giải pháp ứng dụng thực tế.</p>
+        </section>
+
+        <!-- Section 2: Kỹ năng chuyên môn -->
+        <section id="skills">
+            <h2>Kỹ Năng & Công Nghệ</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Lập trình & Cơ sở dữ liệu</h3>
+                    <ul>
+                        <li>Python, JavaScript</li>
+                        <li>T-SQL, MongoDB (NoSQL)</li>
+                        <li>Git & GitHub, Vercel</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Phần cứng & Công cụ</h3>
+                    <ul>
+                        <li>ESP32 & IoT Simulation</li>
+                        <li>Jira, Trello, Figma</li>
+                        <li>WordPress Management</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Các dự án tiêu biểu -->
+        <section id="projects">
+            <h2>Dự Án Nổi Bật</h2>
+            <div class="project-list">
+                <article class="project-item">
+                    <h3>Hệ Thống Quản Lý Khách Sạn (SkyHotel)</h3>
+                    <p>Ứng dụng hỗ trợ quản lý vận hành phòng, thông tin lưu trữ và dịch vụ cho mô hình 30 phòng.</p>
+                </article>
+                <article class="project-item">
+                    <h3>Code Gameshow Repository</h3>
+                    <p>Kho lưu trữ mã nguồn các dự án trò chơi trực tuyến tương tác trên GitHub (<a href="https://github.com/Long9637/CODE-GAMESHOW-" target="_blank">Xem kho lưu trữ</a>).</p>
+                </article>
+                <article class="project-item">
+                    <h3>Hệ thống IoT Giám Sát Thông Minh</h3>
+                    <p>Mô phỏng mạch phần cứng sử dụng ESP32, cảm biến chuyển động PIR và module LED trên nền tảng Wokwi.</p>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================== -->
+    <!-- FOOTER: Khối chân trang thông tin liên hệ và bản quyền -->
+    <!-- ========================================== -->
+    <footer id="contact">
+        <p>&copy; 2026 Nguyễn Hoàng Đức Long. All rights reserved.</p>
+        <p>GitHub: <a href="https://github.com/Long9637" target="_blank">github.com/Long9637</a></p>
+    </footer>
+
+    <!-- Hệ thống tương tác công nghệ cao: Mạng lưới hạt vi mạch + Sóng nước chuột -->
+    <script>
+        // --- 1. MẠNG LƯỚI HẠT VI MẠCH CÔNG NGHỆ CAO (Interactive Tech Node Mesh) ---
+        const canvas = document.getElementById('tech-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        const mouse = { x: -1000, y: -1000 };
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+        window.addEventListener('mouseleave', () => {
+            mouse.x = -1000;
+            mouse.y = -1000;
+        });
+
+        // Tạo 55 hạt node công nghệ phát sáng
+        const particleCount = Math.min(Math.floor(window.innerWidth / 24), 60);
+        const particles = [];
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                vx: (Math.random() - 0.5) * 0.75,
+                vy: (Math.random() - 0.5) * 0.75,
+                radius: Math.random() * 1.8 + 1.2,
+                color: Math.random() > 0.35 ? '#00f0ff' : '#00ff88'
+            });
+        }
+
+        function renderTechNetwork() {
+            ctx.clearRect(0, 0, width, height);
+
+            for (let i = 0; i < particles.length; i++) {
+                const p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > width) p.vx *= -1;
+                if (p.y < 0 || p.y > height) p.vy *= -1;
+
+                // Vẽ hạt node
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.shadowBlur = 6;
+                ctx.shadowColor = p.color;
+                ctx.fill();
+
+                // Kết nối các hạt lại gần nhau thành mạng vi mạch
+                for (let j = i + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dx = p.x - p2.x;
+                    const dy = p.y - p2.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 130) {
+                        const alpha = (1 - dist / 130) * 0.32;
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.strokeStyle = `rgba(0, 240, 255, ${alpha})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.shadowBlur = 0;
+                        ctx.stroke();
+                    }
+                }
+
+                // Kết nối vi mạch tới con trỏ chuột
+                const mdx = p.x - mouse.x;
+                const mdy = p.y - mouse.y;
+                const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+                if (mdist < 150) {
+                    const malpha = (1 - mdist / 150) * 0.55;
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(mouse.x, mouse.y);
+                    ctx.strokeStyle = `rgba(0, 240, 255, ${malpha})`;
+                    ctx.lineWidth = 1.1;
+                    ctx.stroke();
+                }
+            }
+
+            requestAnimationFrame(renderTechNetwork);
+        }
+        requestAnimationFrame(renderTechNetwork);
+
+        // --- 2. HIỆU ỨNG SÓNG NƯỚC NHỎ GỌN TINH TẾ ---
+        let lastRipple = 0;
+        const rippleInterval = 85;
+
+        function createRipple(x, y, isClick = false) {
+            const ripple = document.createElement('div');
+            ripple.className = 'water-ripple' + (isClick ? ' click-wave' : '');
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            document.body.appendChild(ripple);
+
+            ripple.addEventListener('animationend', () => {
+                ripple.remove();
+            });
+        }
+
+        window.addEventListener('mousemove', (e) => {
+            document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+            document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+
+            const now = Date.now();
+            if (now - lastRipple > rippleInterval) {
+                createRipple(e.clientX, e.clientY, false);
+                lastRipple = now;
+            }
+        });
+
+        window.addEventListener('click', (e) => {
+            createRipple(e.clientX, e.clientY, true);
+        });
+
+        window.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 0) {
+                const touch = e.touches[0];
+                document.documentElement.style.setProperty('--mouse-x', `${touch.clientX}px`);
+                document.documentElement.style.setProperty('--mouse-y', `${touch.clientY}px`);
+                const now = Date.now();
+                if (now - lastRipple > rippleInterval) {
+                    createRipple(touch.clientX, touch.clientY, false);
+                    lastRipple = now;
+                }
+            }
+        }, { passive: true });
+    </script>
+
+</body>
+
+</html>
