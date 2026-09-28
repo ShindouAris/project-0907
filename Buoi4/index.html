@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mạc Minh Hải - Website Cá Nhân</title>
+    <!-- Liên kết tới file CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HEADER & NAVIGATION -->
+    <header>
+        <h1>Mạc Minh Hải</h1>
+        <nav>
+            <ul>
+                <li><a href="#gioi-thieu">Giới thiệu</a></li>
+                <li><a href="#ky-nang">Kỹ năng</a></li>
+                <li><a href="#muc-tieu">Mục tiêu</a></li>
+                <li><button class="theme-toggle" id="darkModeToggle" aria-label="Toggle Dark Mode">🌙</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- Section Giới thiệu -->
+        <section id="gioi-thieu" class="reveal-card">
+            <h2>Giới thiệu bản thân</h2>
+            <p>Tôi là người yêu thích sáng tạo, học hỏi và xây dựng những sản phẩm hữu ích.</p>
+            <p><small class="text-muted">Liên hệ: 01234556789</small></p>
+        </section>
+
+        <!-- Section Kỹ năng -->
+        <section id="ky-nang" class="reveal-card" style="animation-delay: 0.15s;">
+            <h2>Kỹ năng</h2>
+            <p>Các kỹ năng cốt lõi tôi đang phát triển:</p>
+            <ul>
+                <li>HTML cơ bản</li>
+                <li>Giao tiếp và làm việc nhóm</li>
+                <li>Tư duy giải quyết vấn đề</li>
+            </ul>
+        </section>
+
+        <!-- Section Mục tiêu -->
+        <section id="muc-tieu" class="reveal-card" style="animation-delay: 0.3s;">
+            <h2>Mục tiêu</h2>
+            <p>Tôi muốn phát triển một website cá nhân để chia sẻ dự án và hành trình học tập.</p>
+            <button class="btn">Xem dự án</button>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Mạc Minh Hải</p>
+    </footer>
+
+    <!-- SCRIPT XỬ LÝ DARK MODE & CUỘN TRANG -->
+    <script>
+        // 1. Logic Dark mode
+        const toggleBtn = document.getElementById('darkModeToggle');
+        toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            if(document.body.classList.contains('dark-mode')) {
+                toggleBtn.textContent = '☀️';
+            } else {
+                toggleBtn.textContent = '🌙';
+            }
+        });
+
+        // 2. Logic Hiệu ứng xuất hiện khi cuộn trang (Scroll Reveal)
+        const revealCards = document.querySelectorAll('.reveal-card');
+        const revealOnScroll = () => {
+            revealCards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (cardTop < windowHeight * 0.85) {
+                    card.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+    </script>
+</body>
+</html>
