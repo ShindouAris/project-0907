@@ -713,10 +713,102 @@ section > p {
 }
 
 /* ==========================================================================
-   7. SKILLS SECTION (BỘ KỸ NĂNG & CÔNG CỤ)
-   - Sử dụng CSS Grid để tạo bố cục 3 cột thẻ cho 3 nhóm kỹ năng.
-   - Các danh sách kỹ năng bên trong chuyển thành dạng thẻ chip dễ nhìn.
+   SKILL BAR ANIMATION (THANH TIẾN ĐỘ KỸ NĂNG)
+   - Sử dụng CSS Custom Properties (--skill-level) thiết lập mức độ.
+   - IntersectionObserver thêm class .is-visible khi cuộn tới.
+   - transform: scaleX() chạy mượt mà từ 0 → 1 với transform-origin: left
+     (Tối ưu GPU 60fps, không gây layout reflow so với thay đổi width liên tục).
+   - Kèm vệt sáng shimmer chạy lặp lại nhẹ nhàng.
    ========================================================================== */
+.skill-bars-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.skill-bar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.skill-bar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.925rem;
+  font-weight: 600;
+}
+
+.skill-bar-title {
+  color: var(--text-main);
+}
+
+.skill-bar-percent {
+  font-family: var(--font-mono);
+  color: var(--accent-cyan);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.skill-bar-track {
+  width: 100%;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  width: var(--skill-level);
+  background: var(--accent-gradient);
+  border-radius: var(--radius-full);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+  position: relative;
+}
+
+/* Vệt sáng shimmer dọc theo thanh */
+.skill-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
+  transform: translateX(-100%);
+}
+
+/* Trạng thái kích hoạt khi cuộn vào viewport */
+.skill-bar-item.is-visible .skill-bar-fill {
+  transform: scaleX(1);
+}
+
+.skill-bar-item.is-visible .skill-bar-fill::after {
+  animation: skill-shimmer 2.2s infinite 1.2s;
+}
+
+@keyframes skill-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

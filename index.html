@@ -254,6 +254,56 @@
         <h2>Công nghệ &amp; Hộp đồ nghề kỹ thuật</h2>
         <p>Những công nghệ mình dùng thường xuyên để thí nghiệm và làm dự án:</p>
 
+        <!--
+          ======================================================================
+          SKILL PROGRESS BARS (THANH KỸ NĂNG CHẠY TIẾN ĐỘ)
+          - Sử dụng CSS Custom Properties: --skill-level
+          - Kích hoạt bằng IntersectionObserver khi xuất hiện trong viewport.
+          - Thanh tiến độ animate mượt mà từ 0% → giá trị kỹ năng.
+          ======================================================================
+        -->
+        <div class="skill-bars-showcase">
+          <div class="skill-bar-item" style="--skill-level: 90%;">
+            <div class="skill-bar-header">
+              <span class="skill-bar-title">HTML5 Semantic &amp; SEO</span>
+              <span class="skill-bar-percent">90%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill"></div>
+            </div>
+          </div>
+
+          <div class="skill-bar-item" style="--skill-level: 85%;">
+            <div class="skill-bar-header">
+              <span class="skill-bar-title">CSS3 (Flexbox, Grid &amp; Animation)</span>
+              <span class="skill-bar-percent">85%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill"></div>
+            </div>
+          </div>
+
+          <div class="skill-bar-item" style="--skill-level: 80%;">
+            <div class="skill-bar-header">
+              <span class="skill-bar-title">JavaScript (ES6+, DOM API, Async)</span>
+              <span class="skill-bar-percent">80%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill"></div>
+            </div>
+          </div>
+
+          <div class="skill-bar-item" style="--skill-level: 85%;">
+            <div class="skill-bar-header">
+              <span class="skill-bar-title">Responsive Web Design</span>
+              <span class="skill-bar-percent">85%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill"></div>
+            </div>
+          </div>
+        </div>
+
         <div class="skills-grid">
           <!-- Nhóm 1: Nền tảng cốt lõi -->
           <div class="skill-card">

@@ -61,4 +61,29 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // 3. Skill Progress Bar Observer (IntersectionObserver)
+  const skillBarItems = document.querySelectorAll('.skill-bar-item');
+  if ('IntersectionObserver' in window && skillBarItems.length > 0) {
+    const skillObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '0px 0px -40px 0px',
+      }
+    );
+
+    skillBarItems.forEach((item) => {
+      skillObserver.observe(item);
+    });
+  } else {
+    skillBarItems.forEach((item) => item.classList.add('is-visible'));
+  }
 });
