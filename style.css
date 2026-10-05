@@ -679,6 +679,92 @@ footer {
 }
 
 /* ==========================================================================
+   FLOATING ACTION BUTTON (NÚT LIÊN HỆ CỐ ĐỊNH)
+   - position: fixed ở góc dưới bên phải.
+   - Hiệu ứng pulse vòng sáng nhẹ nhàng bằng @keyframes.
+   - Phản hồi khi hover: scale nhẹ, shadow sáng hơn.
+   - Kèm nhãn tooltip tinh tế khi hover trên desktop.
+   ========================================================================== */
+.floating-contact-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  background: var(--accent-gradient);
+  color: #0b0f19;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4), var(--shadow-md);
+  cursor: pointer;
+  text-decoration: none;
+  animation: fab-pulse 3s infinite cubic-bezier(0.4, 0, 0.6, 1);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+  will-change: transform, box-shadow;
+}
+
+.floating-contact-btn .fab-icon {
+  width: 26px;
+  height: 26px;
+  stroke: #0b0f19;
+  transition: transform var(--transition-fast);
+}
+
+.floating-contact-btn .fab-tooltip {
+  position: absolute;
+  right: calc(100% + 12px);
+  background-color: var(--bg-surface-elevated);
+  color: var(--text-main);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(8px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.floating-contact-btn:hover {
+  transform: scale(1.08) translateY(-3px);
+  box-shadow: 0 8px 25px rgba(56, 189, 248, 0.6), 0 0 20px rgba(99, 102, 241, 0.4);
+  text-decoration: none;
+  color: #0b0f19;
+}
+
+.floating-contact-btn:hover .fab-icon {
+  transform: scale(1.05);
+}
+
+.floating-contact-btn:hover .fab-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.floating-contact-btn:active {
+  transform: scale(0.95);
+}
+
+/* Hiệu ứng pulse vòng sóng nhẹ nhàng */
+@keyframes fab-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.55), 0 4px 14px rgba(56, 189, 248, 0.3);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(56, 189, 248, 0), 0 4px 14px rgba(56, 189, 248, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0), 0 4px 14px rgba(56, 189, 248, 0.3);
+  }
+}
+
+/* ==========================================================================
    11. RESPONSIVE MEDIA QUERIES (TƯƠNG THÍCH ĐA THIẾT BỊ)
    - Breakpoint 768px: Chuyển đổi giữa Desktop/Tablet sang Mobile.
    - Breakpoint 480px: Tối ưu khoảng cách và kích thước font cho điện thoại nhỏ.
@@ -744,5 +830,22 @@ footer {
 
   .btn {
     width: 100%; /* Nút full width trên điện thoại giúp dễ chạm bấm */
+  }
+
+  /* Tối ưu Floating Action Button trên mobile để không cản trở nội dung */
+  .floating-contact-btn {
+    bottom: 1.25rem;
+    right: 1.25rem;
+    width: 48px;
+    height: 48px;
+  }
+
+  .floating-contact-btn .fab-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .floating-contact-btn .fab-tooltip {
+    display: none;
   }
 }
