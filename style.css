@@ -196,6 +196,11 @@ nav ul li a:active {
   transform: scale(0.96);
 }
 
+/* Nút Hamburger ẩn trên Desktop */
+.hamburger-btn {
+  display: none;
+}
+
 /* ==========================================================================
    4. MAIN CONTENT & SECTIONS CHUNG
    - Mỗi section có khoảng cách dọc (padding) thoáng đãng, cân đối.
@@ -1174,21 +1179,124 @@ footer {
     scroll-padding-top: 130px; /* Thanh header có thể xếp dòng nên cần bù nhiều hơn */
   }
 
-  /* Header xếp dọc khi menu không đủ chỗ dàn ngang */
+  /* Header hiển thị dạng flex ngang: Branding bên trái, Hamburger bên phải */
   .header-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .branding {
+    max-width: calc(100% - 50px);
+  }
+
+  .branding .tagline {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Nút Hamburger với 3 thanh ngang */
+  .hamburger-btn {
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1002;
+    outline: none;
+  }
+
+  .hamburger-bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-main);
+    border-radius: var(--radius-full);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.25s ease,
+                background-color 0.25s ease;
+    transform-origin: center;
+    will-change: transform, opacity;
+  }
+
+  /* ==========================================================================
+     HAMBURGER ANIMATION:
+     - Thanh trên xoay thành một phần của dấu X (+45deg, dịch chuyển xuống)
+     - Thanh giữa fade và scale về 0
+     - Thanh dưới xoay thành phần còn lại của dấu X (-45deg, dịch chuyển lên)
+     ========================================================================== */
+  .hamburger-btn.is-active .top-bar {
+    transform: translateY(9.5px) rotate(45deg);
+    background-color: var(--accent-cyan);
+  }
+
+  .hamburger-btn.is-active .mid-bar {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .hamburger-btn.is-active .bot-bar {
+    transform: translateY(-9.5px) rotate(-45deg);
+    background-color: var(--accent-cyan);
+  }
+
+  /* Khung Navigation xổ xuống trên Mobile */
+  nav {
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    left: 0;
+    right: 0;
+    background-color: rgba(11, 15, 25, 0.98);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+    padding: 1.25rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0.3s;
+    pointer-events: none;
+    z-index: 1001;
+  }
+
+  nav.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
   }
 
   nav ul {
-    flex-wrap: wrap;
-    gap: 0.25rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
     width: 100%;
   }
 
   nav ul li a {
-    padding: 0.35rem 0.65rem;
-    font-size: 0.85rem;
+    display: block;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+  }
+
+  nav ul li a:hover,
+  nav ul li a:focus-visible {
+    background-color: rgba(56, 189, 248, 0.1);
+    border-color: rgba(56, 189, 248, 0.3);
+    color: var(--accent-cyan);
   }
 
   #hero h2 {

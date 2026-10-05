@@ -20,4 +20,45 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // 2. Mobile Hamburger Menu Toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const primaryNav = document.getElementById('primaryNav');
+
+  if (menuToggle && primaryNav) {
+    const toggleMenu = (isOpen) => {
+      const active = isOpen !== undefined ? isOpen : !menuToggle.classList.contains('is-active');
+      menuToggle.classList.toggle('is-active', active);
+      primaryNav.classList.toggle('is-open', active);
+      menuToggle.setAttribute('aria-expanded', String(active));
+      menuToggle.setAttribute('aria-label', active ? 'Đóng menu điều hướng' : 'Mở menu điều hướng');
+    };
+
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMenu();
+    });
+
+    // Đóng menu khi nhấp vào liên kết điều hướng
+    primaryNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        toggleMenu(false);
+      });
+    });
+
+    // Đóng menu khi bấm phím Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menuToggle.classList.contains('is-active')) {
+        toggleMenu(false);
+        menuToggle.focus();
+      }
+    });
+
+    // Đóng menu khi nhấp chuột ra ngoài
+    document.addEventListener('click', (e) => {
+      if (menuToggle.classList.contains('is-active') && !primaryNav.contains(e.target) && !menuToggle.contains(e.target)) {
+        toggleMenu(false);
+      }
+    });
+  }
 });

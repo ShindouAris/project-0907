@@ -43,7 +43,20 @@
           chuyển trang, thường được bọc trong danh sách <ul> hoặc <ol>.
         ==========================================================================
       -->
-      <nav aria-label="Điều hướng chính">
+      <!--
+        ==========================================================================
+        HAMBURGER BUTTON:
+        - Nút mở menu trên thiết bị di động (mobile & tablet).
+        - 3 thanh span ngang được animate bằng transform & opacity thành dấu ×.
+        ==========================================================================
+      -->
+      <button class="hamburger-btn" id="menuToggle" aria-label="Mở menu điều hướng" aria-expanded="false" aria-controls="primaryNav">
+        <span class="hamburger-bar top-bar"></span>
+        <span class="hamburger-bar mid-bar"></span>
+        <span class="hamburger-bar bot-bar"></span>
+      </button>
+
+      <nav id="primaryNav" aria-label="Điều hướng chính">
         <ul>
           <li><a href="#hero">Trang chủ</a></li>
           <li><a href="#about">Về mình</a></li>
