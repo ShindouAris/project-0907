@@ -112,13 +112,79 @@
     <section id="about">
       <div class="container">
         <h2>Về bản thân &amp; Triết lý lập trình</h2>
-        <div class="about-intro">
-          <p>
-            Hành trình của mình bắt đầu từ sự tò mò muốn biết cái gì thực sự xảy ra sau khi mình nhấn nút
-            Enter trên trình duyệt. Mình từng thử cài Linux, vô tình làm hỏng bootloader vài lần, tự sửa
-            router ở phòng trọ và viết script tự động tải bài giảng. Những lần "nghịch dại" đó dạy mình
-            nhiều hơn bất kỳ slide lý thuyết suông nào.
-          </p>
+
+        <!-- Khung giới thiệu kết hợp Thẻ thông tin cá nhân hiệu ứng lật 3D -->
+        <div class="about-showcase">
+          <!--
+            ======================================================================
+            CARD FLIP EFFECT:
+            - Sử dụng perspective, transform-style: preserve-3d, backface-visibility: hidden.
+            - Mặt trước: Avatar, Tên, Chức danh/Vai trò.
+            - Mặt sau: Email, Số điện thoại, GitHub, LinkedIn, Nút liên hệ.
+            - Hỗ trợ cả hover lẫn click/chạm trên thiết bị cảm ứng.
+            ======================================================================
+          -->
+          <div class="flip-card-container">
+            <div class="flip-card" id="profileFlipCard" tabindex="0" role="region" aria-label="Thẻ thông tin cá nhân của Thanh Nam. Hover hoặc chạm để lật thẻ xem chi tiết liên hệ.">
+              <div class="flip-card-inner">
+                <!-- Mặt trước (Front) -->
+                <div class="flip-card-front">
+                  <div class="flip-hint" aria-hidden="true">
+                    <span class="flip-hint-icon">↻</span> Lật thẻ
+                  </div>
+                  <div class="flip-avatar-box">
+                    <img src="assets/avatar.svg" alt="Avatar đại diện của Trần Thanh Nam" class="flip-avatar" width="110" height="110">
+                  </div>
+                  <h3 class="flip-name">Trần Thanh Nam</h3>
+                  <p class="flip-role">Software Developer &amp; Builder</p>
+                  <div class="flip-tags">
+                    <span class="flip-tag">Systems</span>
+                    <span class="flip-tag">Web Dev</span>
+                    <span class="flip-tag">C++ / Go</span>
+                  </div>
+                  <p class="flip-touch-hint">Chạm hoặc rê chuột để lật mặt sau &rarr;</p>
+                </div>
+
+                <!-- Mặt sau (Back) -->
+                <div class="flip-card-back">
+                  <div class="flip-hint" aria-hidden="true">
+                    <span class="flip-hint-icon">↺</span> Quay lại
+                  </div>
+                  <h4 class="flip-back-title">Thông tin liên hệ</h4>
+                  <div class="flip-contact-item">
+                    <span class="flip-label">Email:</span>
+                    <a href="mailto:tranthanhnam.ccc@gmail.com" class="flip-val">tranthanhnam.ccc@gmail.com</a>
+                  </div>
+                  <div class="flip-contact-item">
+                    <span class="flip-label">Số điện thoại:</span>
+                    <a href="tel:+84912345678" class="flip-val">+84 912 345 678</a>
+                  </div>
+                  <div class="flip-contact-item">
+                    <span class="flip-label">Mạng xã hội:</span>
+                    <div class="flip-socials">
+                      <a href="https://github.com/ShindouAris" target="_blank" rel="noopener noreferrer">GitHub</a>
+                      <span>•</span>
+                      <a href="https://linkedin.com/in/kadin-tran-a3663b393" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    </div>
+                  </div>
+                  <a href="#contact" class="btn flip-action-btn">Liên hệ ngay &rarr;</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-intro">
+            <p>
+              Hành trình của mình bắt đầu từ sự tò mò muốn biết cái gì thực sự xảy ra sau khi mình nhấn nút
+              Enter trên trình duyệt. Mình từng thử cài Linux, vô tình làm hỏng bootloader vài lần, tự sửa
+              router ở phòng trọ và viết script tự động tải bài giảng. Những lần "nghịch dại" đó dạy mình
+              nhiều hơn bất kỳ slide lý thuyết suông nào.
+            </p>
+            <p style="margin-top: 1rem;">
+              Mình tin rằng một kỹ sư phần mềm giỏi không chỉ biết viết code chạy được, mà còn phải biết nó
+              tiêu tốn bao nhiêu chu kỳ CPU, tốn bao nhiêu byte RAM và vận hành an toàn trong môi trường thực tế ra sao.
+            </p>
+          </div>
         </div>
 
         <h3>Phong cách làm việc của mình:</h3>
@@ -363,5 +429,7 @@
     <span class="fab-tooltip">Liên hệ</span>
   </a>
 
+  <!-- JavaScript tương tác (Card Flip, Hamburger Menu, Scroll Observer) -->
+  <script src="script.js" defer></script>
 </body>
 </html>

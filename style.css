@@ -338,18 +338,239 @@ section > p {
 }
 
 /* ==========================================================================
-   6. ABOUT SECTION (TRIẾT LÝ LẬP TRÌNH)
-   - Sử dụng CSS Grid cho danh sách phong cách làm việc để hiển thị dạng thẻ.
+   6. ABOUT SECTION (TRIẾT LÝ LẬP TRÌNH & THẺ PROFILE 3D)
+   - Layout 2 cột: Thẻ thông tin cá nhân 3D lật mặt (Flip Card) và Giới thiệu.
    - Mỗi phong cách là một thẻ với viền và nền riêng biệt.
    ========================================================================== */
+.about-showcase {
+  display: grid;
+  grid-template-columns: 330px 1fr;
+  gap: 2rem;
+  align-items: stretch;
+  margin-bottom: 2rem;
+}
+
+/* ==========================================================================
+   CARD FLIP EFFECT (HIỆU ỨNG LẬT THẺ 3D)
+   - perspective: Tạo không gian phối cảnh 3D.
+   - transform-style: preserve-3d để bảo lưu trục xoay 3D các phần tử con.
+   - backface-visibility: hidden để ẩn mặt sau khi xoay qua 90 độ.
+   - rotateY(180deg): Lật qua mặt thông tin liên hệ.
+   ========================================================================== */
+.flip-card-container {
+  perspective: 1200px;
+  width: 100%;
+}
+
+.flip-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 410px;
+  cursor: pointer;
+  outline: none;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+}
+
+/* Kích hoạt xoay thẻ: hover trên desktop, class .is-flipped trên thiết bị cảm ứng */
+.flip-card:hover .flip-card-inner,
+.flip-card.is-flipped .flip-card-inner,
+.flip-card:focus-visible .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* Mặt trước (Front) */
+.flip-card-front {
+  background: linear-gradient(160deg, #131c2e 0%, #0e1626 100%);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.flip-card:hover .flip-card-front,
+.flip-card.is-flipped .flip-card-front {
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+.flip-hint {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--accent-cyan);
+  background-color: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  pointer-events: none;
+}
+
+.flip-hint-icon {
+  font-size: 0.9rem;
+}
+
+.flip-avatar-box {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  padding: 4px;
+  background: var(--accent-gradient);
+  box-shadow: var(--shadow-glow);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flip-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: var(--bg-surface);
+  object-fit: cover;
+}
+
+.flip-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0.25rem 0;
+}
+
+.flip-role {
+  font-size: 0.875rem;
+  color: var(--accent-cyan);
+  font-family: var(--font-mono);
+  margin-bottom: 0.75rem;
+}
+
+.flip-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.flip-tag {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  color: var(--text-muted);
+}
+
+.flip-touch-hint {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin: 0;
+}
+
+/* Mặt sau (Back) */
+.flip-card-back {
+  background: linear-gradient(160deg, #0f1a2e 0%, #17243c 100%);
+  border: 1px solid var(--accent-cyan);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  transform: rotateY(180deg);
+  text-align: left;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.flip-back-title {
+  font-size: 1.15rem;
+  color: var(--accent-cyan);
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.5rem;
+}
+
+.flip-contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.flip-label {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.flip-val {
+  font-size: 0.9rem;
+  color: var(--text-main);
+  word-break: break-all;
+}
+
+.flip-val:hover {
+  color: var(--accent-cyan);
+}
+
+.flip-socials {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.flip-socials a {
+  color: var(--accent-cyan);
+}
+
+.flip-action-btn {
+  width: 100%;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  padding: 0.55rem 1rem;
+}
+
 .about-intro {
   background-color: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   padding: 1.75rem 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
   color: var(--text-muted);
   font-size: 1.05rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Lý do dùng CSS Grid:
@@ -799,6 +1020,17 @@ footer {
 
   .hero-card {
     padding: 1.5rem;
+  }
+
+  .about-showcase {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .flip-card {
+    min-height: 420px;
+    max-width: 360px;
+    margin: 0 auto;
   }
 
   .skills-grid,
