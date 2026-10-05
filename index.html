@@ -84,6 +84,28 @@
     <section id="hero">
       <div class="container">
         <div class="hero-card">
+          <!-- Thanh điều khiển mô phỏng Terminal -->
+          <div class="terminal-header" aria-hidden="true">
+            <span class="terminal-btn red"></span>
+            <span class="terminal-btn yellow"></span>
+            <span class="terminal-btn green"></span>
+            <span class="terminal-path">~/portfolio/dev-profile.sh</span>
+          </div>
+
+          <!--
+            ======================================================================
+            CSS TYPING EFFECT:
+            - 100% Thuần CSS: @keyframes, steps() và monospace font.
+            - Không dùng bất kỳ JavaScript nào cho hiệu ứng gõ.
+            - Có con trỏ nhấp nháy nhịp nhàng chuẩn giao diện lập trình.
+            ======================================================================
+          -->
+          <div class="hero-typing-container" aria-label="Tôi là một Web Developer...">
+            <span class="typing-prefix" aria-hidden="true">&gt;&nbsp;</span>
+            <span class="typing-text" aria-hidden="true">Tôi là một Web Developer...</span>
+            <span class="typing-cursor" aria-hidden="true"></span>
+          </div>
+
           <h2>Xin chào anh em, mình là một Builder thích thực chiến! 🚀</h2>
           <p class="hero-desc">
             Mình là sinh viên năm 3 ngành Công nghệ Thông tin. Thay vì chạy theo các thuật ngữ hào nhoáng

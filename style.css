@@ -286,6 +286,101 @@ section > p {
   pointer-events: none;
 }
 
+/* Thanh điều khiển terminal mô phỏng */
+.terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.terminal-btn {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.terminal-btn.red { background-color: #ef4444; }
+.terminal-btn.yellow { background-color: #f59e0b; }
+.terminal-btn.green { background-color: #10b981; }
+
+.terminal-path {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin-left: 0.5rem;
+}
+
+/* ==========================================================================
+   CSS TYPING EFFECT (HIỆU ỨNG GÕ CHỮ THUẦN CSS)
+   - Sử dụng @keyframes kết hợp steps() để dịch chuyển chiều rộng theo số ký tự.
+   - 100% thuần HTML + CSS, không dùng bất kỳ JavaScript nào.
+   - Con trỏ nhấp nháy mô phỏng terminal/code editor chuẩn xác.
+   ========================================================================== */
+.hero-typing-container {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.35rem 0.85rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  color: var(--accent-cyan);
+  max-width: 100%;
+}
+
+.typing-prefix {
+  color: var(--accent-green);
+  font-weight: 700;
+  margin-right: 0.25rem;
+  user-select: none;
+}
+
+.typing-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+  width: 0;
+  /* 28 ký tự trong chuỗi "Tôi là một Web Developer..." */
+  animation: typing-animation 4.5s steps(28, end) infinite alternate;
+  will-change: width;
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1.15em;
+  background-color: var(--accent-cyan);
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: cursor-blink 0.75s step-end infinite;
+  box-shadow: 0 0 6px var(--accent-cyan);
+}
+
+@keyframes typing-animation {
+  0%, 15% {
+    width: 0;
+  }
+  70%, 100% {
+    width: 28ch;
+  }
+}
+
+@keyframes cursor-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
 #hero h2 {
   font-size: 2.25rem;
   line-height: 1.25;
@@ -1062,6 +1157,11 @@ footer {
 
   .btn {
     width: 100%; /* Nút full width trên điện thoại giúp dễ chạm bấm */
+  }
+
+  .hero-typing-container {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.6rem;
   }
 
   /* Tối ưu Floating Action Button trên mobile để không cản trở nội dung */
