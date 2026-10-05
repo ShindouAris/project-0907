@@ -96,7 +96,7 @@
     -->
     <section id="hero">
       <div class="container">
-        <div class="hero-card">
+        <div class="hero-card reveal-on-scroll">
           <!-- Thanh điều khiển mô phỏng Terminal -->
           <div class="terminal-header" aria-hidden="true">
             <span class="terminal-btn red"></span>
@@ -139,17 +139,17 @@
       SECTION (About Me / Giới thiệu chi tiết):
       - Phân vùng chứa câu chuyện cá nhân, tư duy lập trình và hành trình học hỏi.
       - Dùng để tách biệt phần tiểu sử tác giả thành một cụm ngữ nghĩa rõ ràng,
-        giúp người đọc nắm được bối cảnh, tính cách và định hướng của developer.
+      - Giúp người đọc nắm được bối cảnh, tính cách và định hướng của developer.
       - Nội dung phù hợp: Các đoạn văn mô tả xuất phát điểm, triết lý viết code,
         thói quen làm việc và mục tiêu phát triển.
       ==========================================================================
     -->
     <section id="about">
       <div class="container">
-        <h2>Về bản thân &amp; Triết lý lập trình</h2>
+        <h2 class="reveal-on-scroll">Về bản thân &amp; Triết lý lập trình</h2>
 
         <!-- Khung giới thiệu kết hợp Thẻ thông tin cá nhân hiệu ứng lật 3D -->
-        <div class="about-showcase">
+        <div class="about-showcase reveal-on-scroll">
           <!--
             ======================================================================
             CARD FLIP EFFECT:
@@ -222,17 +222,17 @@
           </div>
         </div>
 
-        <h3>Phong cách làm việc của mình:</h3>
+        <h3 class="reveal-on-scroll">Phong cách làm việc của mình:</h3>
         <ul class="philosophy-grid">
-          <li class="philosophy-item">
+          <li class="philosophy-item reveal-on-scroll stagger-1">
             <strong>Thực tế là ưu tiên số một:</strong>
             <p>Không overengineering. Giải pháp đơn giản, dễ đọc, dễ debug luôn tốt hơn cấu trúc phức tạp nhưng khó bảo trì.</p>
           </li>
-          <li class="philosophy-item">
+          <li class="philosophy-item reveal-on-scroll stagger-2">
             <strong>Học bằng cách bắt tay làm (Learn by building):</strong>
             <p>Đọc tài liệu, viết thử nghiệm nhỏ, làm vỡ nó ra xem lỗi ở đâu rồi tối ưu lại.</p>
           </li>
-          <li class="philosophy-item">
+          <li class="philosophy-item reveal-on-scroll stagger-3">
             <strong>Yêu thích Terminal &amp; Công cụ tối giản:</strong>
             <p>Thích làm việc với dòng lệnh, hiểu cấu trúc file, git workflow và tự viết script tự động hóa những việc lặp đi lặp lại.</p>
           </li>
@@ -251,8 +251,8 @@
     -->
     <section id="skills">
       <div class="container">
-        <h2>Công nghệ &amp; Hộp đồ nghề kỹ thuật</h2>
-        <p>Những công nghệ mình dùng thường xuyên để thí nghiệm và làm dự án:</p>
+        <h2 class="reveal-on-scroll">Công nghệ &amp; Hộp đồ nghề kỹ thuật</h2>
+        <p class="reveal-on-scroll">Những công nghệ mình dùng thường xuyên để thí nghiệm và làm dự án:</p>
 
         <!--
           ======================================================================
@@ -262,7 +262,7 @@
           - Thanh tiến độ animate mượt mà từ 0% → giá trị kỹ năng.
           ======================================================================
         -->
-        <div class="skill-bars-showcase">
+        <div class="skill-bars-showcase reveal-on-scroll">
           <div class="skill-bar-item" style="--skill-level: 90%;">
             <div class="skill-bar-header">
               <span class="skill-bar-title">HTML5 Semantic &amp; SEO</span>
@@ -306,7 +306,7 @@
 
         <div class="skills-grid">
           <!-- Nhóm 1: Nền tảng cốt lõi -->
-          <div class="skill-card">
+          <div class="skill-card reveal-on-scroll stagger-1">
             <h3>1. Nền tảng cốt lõi</h3>
             <ul class="skill-list">
               <li>HTML5 Semantic (Viết code đúng chuẩn ngữ nghĩa, tối ưu khả năng truy cập và SEO).</li>
@@ -316,7 +316,7 @@
           </div>
 
           <!-- Nhóm 2: Ngôn ngữ & Backend -->
-          <div class="skill-card">
+          <div class="skill-card reveal-on-scroll stagger-2">
             <h3>2. Ngôn ngữ &amp; Backend thực chiến</h3>
             <ul class="skill-list">
               <li>Python (Viết script tự động hóa, xử lý dữ liệu và web scraping).</li>
@@ -327,7 +327,7 @@
           </div>
 
           <!-- Nhóm 3: Môi trường & Công cụ -->
-          <div class="skill-card">
+          <div class="skill-card reveal-on-scroll stagger-3">
             <h3>3. Môi trường &amp; Công cụ hàng ngày</h3>
             <ul class="skill-list">
               <li>Hệ điều hành: Linux (Ubuntu / Arch), Windows Terminal (PowerShell / WSL2).</li>
@@ -351,7 +351,7 @@
     -->
     <section class="parallax-banner" aria-label="Triết lý công nghệ">
       <div class="parallax-overlay"></div>
-      <div class="container parallax-content">
+      <div class="container parallax-content reveal-on-scroll">
         <div class="parallax-badge">ENGINEERING MANTRA</div>
         <blockquote class="parallax-quote">
           <p class="quote-text">&ldquo;Talk is cheap. Show me the code.&rdquo;</p>
@@ -373,8 +373,8 @@
     -->
     <section id="projects">
       <div class="container">
-        <h2>Dự án cá nhân đã hoàn thiện</h2>
-        <p>Dưới đây là một số món đồ chơi công nghệ và công cụ thực tế mình tự thiết kế và xây dựng:</p>
+        <h2 class="reveal-on-scroll">Dự án cá nhân đã hoàn thiện</h2>
+        <p class="reveal-on-scroll">Dưới đây là một số món đồ chơi công nghệ và công cụ thực tế mình tự thiết kế và xây dựng:</p>
 
         <div class="projects-grid">
           <!--
@@ -388,7 +388,7 @@
               nghệ áp dụng và liên kết kiểm chứng.
             ========================================================================
           -->
-          <article class="project-card">
+          <article class="project-card reveal-on-scroll stagger-1">
             <!--
               ======================================================================
               FIGURE & FIGCAPTION:
@@ -425,7 +425,7 @@
             </div>
           </article>
 
-          <article class="project-card">
+          <article class="project-card reveal-on-scroll stagger-2">
             <figure>
               <img src="assets/wazemod_page.png" alt="Giao diện ứng dụng WazeMod với các tính năng cảnh báo giao thông">
               <figcaption>Hình 2: Bản mẫu trang web WazeMod.</figcaption>
@@ -466,8 +466,8 @@
     -->
     <section id="contact">
       <div class="container">
-        <h2>Kết nối với mình</h2>
-        <p>
+        <h2 class="reveal-on-scroll">Kết nối với mình</h2>
+        <p class="reveal-on-scroll">
           Mình luôn hào hứng trao đổi về các dự án open-source thú vị, ý tưởng phần mềm hữu ích,
           hoặc cơ hội thực tập, việc làm kỹ thuật. Đừng ngần ngại nhắn cho mình một câu nhé!
         </p>
@@ -482,7 +482,7 @@
             tác giả của trang.
           ========================================================================
         -->
-        <div class="contact-card">
+        <div class="contact-card reveal-on-scroll">
           <address>
             <div class="contact-item">
               <strong>Email</strong>

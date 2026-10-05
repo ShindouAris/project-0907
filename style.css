@@ -1260,6 +1260,31 @@ footer {
 }
 
 /* ==========================================================================
+   SCROLL REVEAL ANIMATIONS (HIỆU ỨNG HIỂN THỊ KHI CUỘN)
+   - Sử dụng transform: translateY(28px) và opacity: 0 cho trạng thái ẩn.
+   - Khi phần tử cuộn vào viewport, IntersectionObserver gán class .is-revealed.
+   - Hiệu ứng chuyển động mượt với cubic-bezier(0.16, 1, 0.3, 1), will-change.
+   - Hỗ trợ các lớp stagger (.stagger-1 -> .stagger-4) cho bố cục danh sách thẻ.
+   ========================================================================== */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-1 { transition-delay: 0.08s; }
+.stagger-2 { transition-delay: 0.18s; }
+.stagger-3 { transition-delay: 0.28s; }
+.stagger-4 { transition-delay: 0.38s; }
+
+/* ==========================================================================
    11. RESPONSIVE MEDIA QUERIES (TƯƠNG THÍCH ĐA THIẾT BỊ)
    - Breakpoint 768px: Chuyển đổi giữa Desktop/Tablet sang Mobile.
    - Breakpoint 480px: Tối ưu khoảng cách và kích thước font cho điện thoại nhỏ.
