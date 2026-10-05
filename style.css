@@ -1497,4 +1497,91 @@ footer {
   .floating-contact-btn .fab-tooltip {
     display: none;
   }
+
+  /* Tối ưu thẻ lật và thanh kỹ năng trên màn hình nhỏ */
+  .flip-card {
+    min-height: 440px;
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    padding: 1.5rem 1rem;
+  }
+
+  .flip-name {
+    font-size: 1.15rem;
+  }
+
+  .flip-back-title {
+    font-size: 1.05rem;
+  }
+
+  .flip-val {
+    font-size: 0.85rem;
+  }
+
+  .skill-bars-showcase {
+    padding: 1.25rem 1rem;
+    gap: 1.25rem;
+  }
 }
+
+/* ==========================================================================
+   12. ACCESSIBILITY: PREFERS REDUCED MOTION
+   - Tôn trọng thiết lập giảm chuyển động của hệ điều hành người dùng.
+   - Giảm hoặc vô hiệu hóa các chuyển động lặp và dịch chuyển lớn.
+   - Giữ nguyên trạng thái hiển thị đầy đủ, không gây mất mát thông tin.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .skill-bar-fill {
+    transform: scaleX(1) !important;
+    transition: none !important;
+  }
+
+  .skill-bar-fill::after {
+    animation: none !important;
+    display: none !important;
+  }
+
+  .typing-text {
+    width: auto !important;
+    animation: none !important;
+  }
+
+  .typing-cursor {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+
+  .floating-contact-btn {
+    animation: none !important;
+  }
+
+  .status-dot {
+    animation: none !important;
+  }
+
+  .flip-card-inner {
+    transition: none !important;
+  }
+
+  .parallax-banner {
+    background-attachment: scroll !important;
+  }
+}
+

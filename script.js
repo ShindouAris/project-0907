@@ -1,6 +1,9 @@
 /**
  * Developer Portfolio Interactive Scripts
- * - Card Flip on Touch / Keyboard
+ * - 1. Card Flip on Touch / Keyboard
+ * - 2. Mobile Hamburger Menu Toggle
+ * - 3. Skill Progress Bar Observer (IntersectionObserver)
+ * - 4. Scroll Reveal Animations Observer (IntersectionObserver)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
