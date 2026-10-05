@@ -769,6 +769,88 @@ section > p {
 }
 
 /* ==========================================================================
+   PARALLAX BANNER (BANNER HIỆU ỨNG PARALLAX)
+   - background-attachment: fixed giữ ảnh nền chuyển động tương đối so với nội dung.
+   - background-position: center; background-size: cover;
+   - Lớp overlay mờ đảm bảo khả năng đọc văn bản cao nhất.
+   - Hỗ trợ fallback mềm trên mobile (background-attachment: scroll).
+   ========================================================================== */
+.parallax-banner {
+  position: relative;
+  background-image: url('assets/parallax-bg.svg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 5.5rem 0;
+  text-align: center;
+  overflow: hidden;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.parallax-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(11, 15, 25, 0.75) 0%, rgba(7, 10, 18, 0.92) 100%);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  pointer-events: none;
+}
+
+.parallax-content {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+}
+
+.parallax-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--accent-cyan);
+  background-color: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+}
+
+.parallax-quote {
+  margin: 0;
+}
+
+.quote-text {
+  font-size: 2.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+  line-height: 1.35;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+.quote-author {
+  display: block;
+  font-size: 1.1rem;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  font-family: var(--font-mono);
+  margin-bottom: 1rem;
+}
+
+.parallax-sub {
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
    8. PROJECTS SECTION (DANH SÁCH DỰ ÁN NỔI BẬT)
    - Mỗi dự án là một thẻ <article> độc lập.
    - Khung ảnh <figure> có hiệu ứng zoom nhẹ khi hover và bảo đảm tỷ lệ 16:9.
@@ -1131,6 +1213,16 @@ footer {
   .skills-grid,
   .projects-grid {
     grid-template-columns: 1fr; /* Dự án và kỹ năng xếp 1 cột trên màn hình nhỏ */
+  }
+
+  /* Fallback hiệu ứng Parallax trên thiết bị di động & tablet */
+  .parallax-banner {
+    background-attachment: scroll;
+    padding: 3.5rem 0;
+  }
+
+  .quote-text {
+    font-size: 1.55rem;
   }
 
   .footer-inner {

@@ -278,6 +278,28 @@
 
     <!--
       ==========================================================================
+      PARALLAX BANNER (BANNER HIỆU ỨNG PARALLAX)
+      - Sử dụng background-attachment: fixed kết hợp background-size: cover để
+        tạo chiều sâu thị giác khi cuộn nội dung.
+      - Phủ lớp gradient overlay tối mờ giữ độ tương phản cao cho chữ.
+      - Hỗ trợ fallback mềm (background-attachment: scroll) trên thiết bị di động
+        để bảo đảm hiệu năng và tương thích trình duyệt Safari/Android.
+      ==========================================================================
+    -->
+    <section class="parallax-banner" aria-label="Triết lý công nghệ">
+      <div class="parallax-overlay"></div>
+      <div class="container parallax-content">
+        <div class="parallax-badge">ENGINEERING MANTRA</div>
+        <blockquote class="parallax-quote">
+          <p class="quote-text">&ldquo;Talk is cheap. Show me the code.&rdquo;</p>
+          <cite class="quote-author">&mdash; Linus Torvalds</cite>
+        </blockquote>
+        <p class="parallax-sub">Tập trung vào kiến trúc hệ thống vững chắc, hiệu năng tối ưu và giải pháp thực tiễn.</p>
+      </div>
+    </section>
+
+    <!--
+      ==========================================================================
       SECTION (Projects / Dự án nổi bật):
       - Phân vùng chứa danh sách các sản phẩm, ứng dụng hoặc thử nghiệm thực tế.
       - Sử dụng thẻ <article> bên trong để định danh từng dự án như một thực thể
