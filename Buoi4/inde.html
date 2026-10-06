@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Trang cá nhân</title>
+
+    <!-- Animate.css (CDN): hiệu ứng UI khi tải trang -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- AOS CSS (CDN): hiệu ứng khi cuộn trang -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HEADER: tên + vị trí + menu. Animate.css chạy ngay khi tải trang (hero) -->
+    <header>
+        <div>
+            <h1 class="animate__animated animate__fadeInDown">Nguyễn Văn A</h1>
+            <p class="animate__animated animate__fadeIn animate__delay-1s">Front-end Developer</p>
+        </div>
+
+        <nav class="animate__animated animate__fadeIn animate__delay-1s">
+            <ul>
+                <li><a href="#about">Giới thiệu</a></li>
+                <li><a href="#projects">Dự án</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN: nội dung chính (chỉ một lần trong tài liệu) -->
+    <main>
+
+        <!-- SECTION 1 - ABOUT -->
+        <section id="about" data-aos="fade-up">
+            <h2>Giới thiệu bản thân</h2>
+            <p>
+                Tôi là một lập trình viên front-end đam mê tạo ra những giao diện 
+                web đẹp, thân thiện và tối ưu trải nghiệm người dùng. 
+                Tôi có kinh nghiệm làm việc với HTML, CSS và các nguyên tắc thiết kế web hiện đại.
+            </p>
+        </section>
+
+        <!-- SECTION 2 - PROJECTS: mỗi card xuất hiện lần lượt (delay tăng dần) -->
+        <section id="projects" data-aos="fade-up">
+            <h2>Dự án nổi bật</h2>
+
+            <article data-aos="zoom-in" data-aos-delay="100">
+                <h3>Website bán hàng thời trang</h3>
+                <p>Xây dựng giao diện trang chủ, danh mục sản phẩm và trang chi tiết sản phẩm.</p>
+            </article>
+
+            <article data-aos="zoom-in" data-aos-delay="250">
+                <h3>Landing page giới thiệu sản phẩm</h3>
+                <p>Thiết kế trang giới thiệu sản phẩm công nghệ với hiệu ứng cuộn mượt mà.</p>
+            </article>
+
+            <article data-aos="zoom-in" data-aos-delay="400">
+                <h3>Blog cá nhân</h3>
+                <p>Xây dựng cấu trúc trang blog chia sẻ kiến thức lập trình.</p>
+            </article>
+        </section>
+
+        <!-- SECTION 3 - CONTACT -->
+        <section id="contact" data-aos="fade-up">
+            <h2>Liên hệ</h2>
+            <address>
+                Email: <a href="mailto:vanA@example.com">vanA@example.com</a><br>
+                Điện thoại: 0909 xxx xxx<br>
+                Địa chỉ: TP. Biên Hòa, Đồng Nai, Việt Nam
+            </address>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer data-aos="fade-in" data-aos-offset="0">
+        <p>&copy; 2026 Nguyễn Văn A. Bảo lưu mọi quyền.</p>
+    </footer>
+
+    <!-- AOS JS (CDN) + khởi tạo -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+</html>
