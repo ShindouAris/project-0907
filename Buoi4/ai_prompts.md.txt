@@ -1,0 +1,955 @@
+# NÂNG CẤP RESPONSIVE + DESIGN SYSTEM CHO WEBSITE HIỆN TẠI
+
+Hãy **phân tích project hiện tại trước**, sau đó nâng cấp Responsive và Design System theo đúng các yêu cầu bên dưới.
+
+## MỤC TIÊU
+
+Xây dựng giao diện theo chuẩn:
+
+**CSS Variables → Design System → Mobile First → Responsive → Media Queries → Inspect → AI Debug → Fix → Re-test**
+
+Mục tiêu cuối cùng:
+
+* Giao diện Responsive tốt trên Mobile, Tablet và Desktop.
+* Áp dụng Mobile First thực sự.
+* Xây dựng Design System cơ bản bằng CSS Variables.
+* Mọi màu sắc và spacing chính sử dụng `var()`.
+* Thay đổi giá trị trong `:root` có thể đồng bộ toàn bộ website.
+* Không xuất hiện Horizontal Scroll.
+* Hình ảnh và Card tự co giãn theo kích thước màn hình.
+* Mobile dễ đọc, dễ thao tác bằng cảm ứng.
+* Không phá giao diện Desktop hiện tại.
+* Không phá JavaScript hoặc chức năng hiện có.
+* Không thay đổi nội dung website nếu không cần thiết.
+* Không thêm framework mới nếu project hiện tại không sử dụng.
+
+---
+
+# 1. PHÂN TÍCH PROJECT HIỆN TẠI
+
+Trước khi sửa code:
+
+1. Đọc và phân tích cấu trúc project.
+2. Xác định:
+
+   * File HTML.
+   * File CSS.
+   * File JavaScript.
+   * Các component/section chính.
+   * Layout hiện tại.
+   * Grid/Flex đang sử dụng.
+   * Navigation/Menu.
+   * Card.
+   * Image/Video.
+   * Button.
+   * Container.
+3. Kiểm tra CSS hiện tại để tìm:
+
+   * Màu sắc hard-code.
+   * Spacing hard-code.
+   * Font-size hard-code.
+   * Fixed width.
+   * Fixed height có nguy cơ gây overflow.
+   * `min-width`.
+   * `100vw`.
+   * Padding + width gây tràn.
+   * Flex/Grid gây vỡ layout.
+   * Image vượt container.
+   * Text quá dài.
+   * Element có nguy cơ gây Horizontal Scroll.
+4. Không sửa code ngay khi chưa hiểu layout hiện tại.
+5. Chỉ chỉnh sửa những file thực sự cần thiết.
+
+Không được thay đổi kiến trúc project nếu không cần thiết.
+
+---
+
+# 2. DESIGN SYSTEM – CSS VARIABLES
+
+Bắt buộc xây dựng Design System cơ bản bằng CSS Variables trong `:root`.
+
+Tối thiểu phải có các nhóm:
+
+* Color.
+* Spacing.
+* Font-size.
+
+Khuyến khích thêm:
+
+* Border-radius.
+* Shadow.
+* Container width.
+* Transition.
+
+Ví dụ:
+
+```css
+:root {
+    /* Colors */
+    --color-primary: #...;
+    --color-secondary: #...;
+    --color-background: #...;
+    --color-surface: #...;
+    --color-text: #...;
+    --color-text-muted: #...;
+    --color-border: #...;
+
+    /* Spacing */
+    --spacing-xs: ...;
+    --spacing-sm: ...;
+    --spacing-md: ...;
+    --spacing-lg: ...;
+    --spacing-xl: ...;
+
+    /* Typography */
+    --font-size-sm: ...;
+    --font-size-md: ...;
+    --font-size-lg: ...;
+    --font-size-xl: ...;
+
+    /* Other Design Tokens */
+    --radius-sm: ...;
+    --radius-md: ...;
+    --radius-lg: ...;
+}
+```
+
+## QUY TẮC BẮT BUỘC
+
+### Màu sắc
+
+Mọi màu sắc chính trong website phải sử dụng CSS Variables.
+
+Không viết lặp:
+
+```css
+color: #ffffff;
+background: #000000;
+border-color: #333333;
+```
+
+Nếu màu đó thuộc Design System thì phải sử dụng:
+
+```css
+color: var(--color-text);
+background: var(--color-background);
+border-color: var(--color-border);
+```
+
+### Spacing
+
+Các giá trị:
+
+* `margin`
+* `padding`
+* `gap`
+* `row-gap`
+* `column-gap`
+
+phải ưu tiên sử dụng CSS Variables.
+
+Ví dụ:
+
+```css
+padding: var(--spacing-md);
+margin-bottom: var(--spacing-lg);
+gap: var(--spacing-sm);
+```
+
+Không lặp lại nhiều giá trị spacing giống nhau bằng hard-code nếu có thể đưa vào Design System.
+
+### Font-size
+
+Các font-size chính phải sử dụng Variables:
+
+```css
+font-size: var(--font-size-sm);
+font-size: var(--font-size-md);
+font-size: var(--font-size-lg);
+```
+
+### Quan trọng
+
+Không được chỉ khai báo Variables rồi bỏ đó.
+
+Mỗi Variable phải được sử dụng thực tế trong website.
+
+Khi thay đổi giá trị trong `:root`, các component liên quan phải thay đổi đồng bộ.
+
+Ví dụ:
+
+```css
+:root {
+    --color-primary: #00ff88;
+}
+```
+
+Nếu đổi thành:
+
+```css
+:root {
+    --color-primary: #0088ff;
+}
+```
+
+thì toàn bộ component đang sử dụng:
+
+```css
+var(--color-primary)
+```
+
+phải tự động đổi màu.
+
+Không cần biến mọi giá trị CSS thành Variable một cách máy móc.
+
+Các giá trị kỹ thuật đơn giản như:
+
+```css
+border: 1px;
+```
+
+không bắt buộc phải trở thành Variable nếu không mang tính Design Token.
+
+---
+
+# 3. MOBILE FIRST
+
+Bắt buộc áp dụng **Mobile First thực sự**.
+
+CSS mặc định phải dành cho màn hình nhỏ trước.
+
+Ví dụ:
+
+```css
+/* Mobile First */
+.container {
+    width: 100%;
+    padding: var(--spacing-md);
+}
+```
+
+Sau đó mới mở rộng:
+
+```css
+@media (min-width: 768px) {
+    ...
+}
+
+@media (min-width: 1024px) {
+    ...
+}
+```
+
+Không được thiết kế Desktop trước rồi chỉ thu nhỏ xuống Mobile.
+
+## Mobile phải ưu tiên
+
+* Layout 1 cột khi phù hợp.
+* Font-size dễ đọc.
+* Padding/margin vừa phải.
+* Button dễ bấm.
+* Navigation không tràn.
+* Image không vượt container.
+* Card tự co giãn.
+* Không xuất hiện Horizontal Scroll.
+
+---
+
+# 4. VIEWPORT
+
+Kiểm tra HTML.
+
+Bắt buộc phải có trong `<head>`:
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
+Nếu chưa có thì bổ sung.
+
+Không được tạo thêm thẻ viewport trùng lặp.
+
+---
+
+# 5. MOBILE TYPOGRAPHY
+
+Font chữ trên Mobile phải dễ đọc.
+
+Bắt buộc:
+
+* Font-size nội dung chính trên Mobile tối thiểu khoảng `16px`.
+* Không sử dụng font-size quá nhỏ khiến người dùng phải zoom.
+* Có thể sử dụng font-size nhỏ hơn cho các thành phần đặc biệt như:
+
+  * Caption.
+  * Badge.
+  * Metadata.
+  * Icon label.
+
+Nhưng chỉ sử dụng khi thực sự cần thiết.
+
+Font-size chính phải ưu tiên sử dụng:
+
+```css
+var(--font-size-md);
+```
+
+và Variable này phải đảm bảo phù hợp với Mobile.
+
+---
+
+# 6. TOUCH TARGET
+
+Các thành phần tương tác trên Mobile phải dễ thao tác bằng ngón tay.
+
+Áp dụng cho:
+
+* Button.
+* Link quan trọng.
+* Navigation item.
+* Menu button.
+* Icon button.
+* Form control.
+
+Ưu tiên vùng chạm khoảng **44px × 44px trở lên**.
+
+Ví dụ:
+
+```css
+button {
+    min-height: 44px;
+    min-width: 44px;
+}
+```
+
+Không để các button/link quá sát nhau gây bấm nhầm.
+
+Không thay đổi thiết kế hiện tại quá nhiều chỉ để đạt kích thước này; ưu tiên tăng vùng click bằng padding nếu phù hợp.
+
+---
+
+# 7. RESPONSIVE IMAGE
+
+Hình ảnh phải tự co giãn theo container.
+
+Kiểm tra và áp dụng khi phù hợp:
+
+```css
+img {
+    max-width: 100%;
+    height: auto;
+}
+```
+
+Không để:
+
+* Image vượt container.
+* Image tạo Horizontal Scroll.
+* Fixed width quá lớn trên Mobile.
+
+Nếu image nằm trong Card hoặc Grid, phải đảm bảo nó co theo chiều rộng parent.
+
+Video/iframe cũng phải được kiểm tra tương tự.
+
+---
+
+# 8. RESPONSIVE CARD
+
+Card phải tự co giãn theo màn hình.
+
+Không sử dụng fixed width gây vỡ layout trên Mobile.
+
+Ưu tiên:
+
+```css
+.card {
+    width: 100%;
+    max-width: 100%;
+}
+```
+
+Nếu sử dụng Grid:
+
+```css
+.cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+}
+```
+
+Sau đó mở rộng trên Tablet/Desktop:
+
+```css
+@media (min-width: 768px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+```
+
+Chỉ sử dụng số cột phù hợp với layout thực tế.
+
+---
+
+# 9. MEDIA QUERIES BẰNG AI
+
+Sử dụng AI để phân tích layout hiện tại và sinh Media Queries phù hợp.
+
+Không tạo Media Query một cách máy móc.
+
+AI phải xác định:
+
+* Element nào thay đổi trên Mobile.
+* Element nào cần `row → column`.
+* Grid cần bao nhiêu cột ở từng breakpoint.
+* Font-size nào cần responsive.
+* Padding/margin nào cần điều chỉnh.
+* Navigation/Menu cần xử lý như thế nào.
+* Card nào có nguy cơ tràn.
+* Image nào có nguy cơ vượt container.
+* Element nào cần `flex-wrap`.
+* Element nào cần thay đổi width/max-width.
+
+Ưu tiên breakpoint dựa trên **nhu cầu thực tế của layout**, không tạo quá nhiều breakpoint.
+
+Ưu tiên các breakpoint hợp lý như:
+
+```css
+/* Mobile mặc định */
+
+/* Tablet */
+@media (min-width: 768px) {
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+}
+
+/* Large Desktop - chỉ dùng nếu thực sự cần */
+@media (min-width: 1440px) {
+}
+```
+
+Không bắt buộc phải sử dụng tất cả breakpoint trên.
+
+Nếu layout không cần breakpoint nào thì không tạo.
+
+---
+
+# 10. RESPONSIVE NAVIGATION
+
+Kiểm tra Navigation trên Mobile.
+
+Nếu Navigation Desktop quá rộng:
+
+* Chuyển menu thành column.
+* Sử dụng menu button nếu project hiện tại đã có cơ chế phù hợp.
+* Cho phép menu wrap nếu phù hợp.
+* Không để navigation gây Horizontal Scroll.
+
+Không phá JavaScript hiện tại.
+
+Nếu menu đang có JavaScript thì chỉ sửa JavaScript khi thực sự cần thiết.
+
+---
+
+# 11. DEBUG HORIZONTAL SCROLL
+
+Bắt buộc kiểm tra Horizontal Scroll.
+
+Không được sử dụng:
+
+```css
+overflow-x: hidden;
+```
+
+chỉ để che lỗi.
+
+Nếu xuất hiện Horizontal Scroll:
+
+### Bước 1
+
+Xác định chính xác viewport gây lỗi.
+
+Ví dụ:
+
+```text
+390px
+```
+
+### Bước 2
+
+Xác định element gây overflow.
+
+Kiểm tra:
+
+* width
+* max-width
+* min-width
+* padding
+* margin
+* gap
+* flex
+* grid
+* position
+* transform
+* font-size
+* image
+* video
+* iframe
+* long text
+* fixed element
+* `100vw`
+
+### Bước 3
+
+Xác định nguyên nhân gốc.
+
+Ví dụ:
+
+```text
+.card có width: 500px trong viewport 390px
+```
+
+hoặc:
+
+```text
+width: 100vw + padding khiến tổng kích thước vượt viewport
+```
+
+### Bước 4
+
+Sử dụng AI phân tích nguyên nhân.
+
+### Bước 5
+
+Đưa ra phương án sửa.
+
+### Bước 6
+
+Áp dụng CSS fix.
+
+### Bước 7
+
+Inspect lại đúng kích thước gây lỗi.
+
+### Bước 8
+
+Kiểm tra lại các breakpoint khác để đảm bảo fix không phá layout.
+
+Chỉ được sử dụng:
+
+```css
+overflow-x: hidden;
+```
+
+khi đã xác định rõ nguyên nhân và việc ẩn overflow là hành vi thiết kế thực sự cần thiết.
+
+Nếu sử dụng, phải ghi rõ lý do.
+
+---
+
+# 12. INSPECT RESPONSIVE TEST
+
+Sau khi hoàn thành CSS, sử dụng:
+
+**Chrome DevTools → Inspect → Toggle Device Toolbar**
+
+Kiểm tra ít nhất:
+
+```text
+320px
+375px
+390px
+768px
+1024px
+1440px
+```
+
+## Kiểm tra từng kích thước
+
+### 320px
+
+Kiểm tra:
+
+* Text.
+* Button.
+* Navigation.
+* Card.
+* Image.
+* Grid.
+* Flex.
+* Overflow.
+
+### 375px
+
+Kiểm tra tương tự.
+
+### 390px
+
+Kiểm tra tương tự.
+
+### 768px
+
+Kiểm tra:
+
+* Tablet layout.
+* Grid.
+* Navigation.
+* Spacing.
+* Typography.
+
+### 1024px
+
+Kiểm tra:
+
+* Desktop layout.
+* Container.
+* Grid.
+* Navigation.
+
+### 1440px
+
+Kiểm tra:
+
+* Container quá rộng.
+* Khoảng trắng.
+* Card.
+* Typography.
+* Section.
+* Layout tổng thể.
+
+---
+
+# 13. RESPONSIVE CHECKLIST
+
+Ở mỗi kích thước phải kiểm tra:
+
+* [ ] Text không bị tràn.
+* [ ] Text dài không phá layout.
+* [ ] Card không bị vỡ.
+* [ ] Image không vượt container.
+* [ ] Video/iframe không vượt container.
+* [ ] Button không chồng lên nhau.
+* [ ] Navigation không bị tràn.
+* [ ] Grid không bị vỡ.
+* [ ] Flex không bị overflow.
+* [ ] Không xuất hiện Horizontal Scroll.
+* [ ] Padding hợp lý.
+* [ ] Margin hợp lý.
+* [ ] Gap hợp lý.
+* [ ] Font-size dễ đọc.
+* [ ] Mobile font-size chính ≥ 16px.
+* [ ] Touch Target đủ lớn.
+* [ ] Section không bị overflow.
+* [ ] Không có fixed width gây vỡ layout.
+
+---
+
+# 14. CSS QUALITY
+
+Code phải:
+
+* Mobile First.
+* Dễ đọc.
+* Có cấu trúc rõ ràng.
+* Không lặp CSS không cần thiết.
+* Sử dụng CSS Variables.
+* Màu sắc chính sử dụng `var()`.
+* Spacing chính sử dụng `var()`.
+* Font-size chính sử dụng `var()`.
+* Hạn chế hard-code.
+* Không tạo quá nhiều Media Queries.
+* Không phá Desktop layout hiện tại.
+* Không phá JavaScript.
+* Không phá chức năng website.
+* Không đổi nội dung nếu không cần thiết.
+* Không thêm framework mới.
+
+Không tạo CSS chỉ để vượt qua checklist.
+
+Code phải thực sự cải thiện Responsive.
+
+---
+
+# 15. KHÔNG ĐƯỢC "CHE LỖI"
+
+Không được giải quyết Horizontal Scroll bằng cách đơn giản:
+
+```css
+body {
+    overflow-x: hidden;
+}
+```
+
+mà không tìm nguyên nhân.
+
+Phải tìm element gây overflow trước.
+
+Ví dụ:
+
+```text
+Viewport = 390px
+↓
+Element = .hero-content
+↓
+Width = 600px
+↓
+Nguyên nhân = fixed width
+↓
+Fix = width: 100%; max-width: ...
+```
+
+Đây mới được xem là Debug Responsive đúng quy trình.
+
+---
+
+# 16. KHÔNG PHÁ DESKTOP HIỆN TẠI
+
+Nếu Desktop hiện tại đang hoạt động tốt:
+
+* Không redesign lại toàn bộ.
+* Không đổi màu không cần thiết.
+* Không đổi font không cần thiết.
+* Không đổi nội dung.
+* Không đổi animation không cần thiết.
+* Không thay đổi JavaScript nếu không liên quan.
+
+Chỉ nâng cấp những phần cần thiết để đạt Responsive + Design System.
+
+---
+
+# 17. KIỂM TRA DESIGN SYSTEM
+
+Sau khi sửa code, kiểm tra:
+
+### CSS Variables
+
+Báo cáo:
+
+1. Có bao nhiêu CSS Variables?
+2. Có bao nhiêu Color Variables?
+3. Có bao nhiêu Spacing Variables?
+4. Có bao nhiêu Font-size Variables?
+5. Có thêm Radius/Shadow Variables không?
+
+### Usage
+
+Xác định:
+
+* Variable màu nào được sử dụng ở đâu.
+* Variable spacing nào được sử dụng ở đâu.
+* Variable font-size nào được sử dụng ở đâu.
+
+Không được có Variable "khai báo cho có".
+
+---
+
+# 18. FINAL RESPONSIVE AUDIT
+
+Trước khi hoàn thành phải thực hiện Audit cuối cùng.
+
+Checklist bắt buộc:
+
+```text
+[ ] Có CSS Variables trong :root.
+[ ] Có Color Variables.
+[ ] Có Spacing Variables.
+[ ] Có Font-size Variables.
+[ ] Có ít nhất 5 Variables được sử dụng thực tế.
+[ ] Màu sắc chính sử dụng var().
+[ ] Spacing chính sử dụng var().
+[ ] Font-size chính sử dụng var().
+[ ] Thay đổi Variable trong :root làm thay đổi đồng bộ website.
+[ ] Có <meta name="viewport">.
+[ ] Mobile First được triển khai thực sự.
+[ ] Mobile layout ưu tiên 1 cột khi phù hợp.
+[ ] Mobile font-size chính >= 16px.
+[ ] Touch Target đủ lớn.
+[ ] Image responsive.
+[ ] Card responsive.
+[ ] Navigation responsive.
+[ ] Grid responsive.
+[ ] Flex responsive.
+[ ] Không có Horizontal Scroll.
+[ ] Không có fixed width gây vỡ layout.
+[ ] Không dùng overflow-x: hidden để che lỗi.
+[ ] Đã kiểm tra 320px.
+[ ] Đã kiểm tra 375px.
+[ ] Đã kiểm tra 390px.
+[ ] Đã kiểm tra 768px.
+[ ] Đã kiểm tra 1024px.
+[ ] Đã kiểm tra 1440px.
+[ ] Đã sửa các lỗi Responsive phát hiện được.
+[ ] Đã Inspect lại sau khi sửa.
+[ ] Không phá Desktop.
+[ ] Không phá JavaScript.
+[ ] Không phá chức năng website.
+```
+
+---
+
+# 19. BÁO CÁO KẾT QUẢ
+
+Sau khi hoàn thành, báo cáo rõ ràng theo format:
+
+## 1. Design System
+
+* Số lượng CSS Variables:
+* Color Variables:
+* Spacing Variables:
+* Font-size Variables:
+* Radius Variables:
+* Shadow Variables:
+
+## 2. Components sử dụng Variables
+
+Ví dụ:
+
+```text
+Header:
+- color-primary
+- spacing-md
+- font-size-md
+
+Hero:
+- color-background
+- spacing-lg
+- font-size-xl
+
+Card:
+- color-surface
+- spacing-md
+- radius-md
+```
+
+## 3. Mobile First
+
+Giải thích:
+
+* Layout Mobile hoạt động như thế nào.
+* Grid thay đổi như thế nào.
+* Flex thay đổi như thế nào.
+* Navigation xử lý thế nào.
+* Typography xử lý thế nào.
+
+## 4. Breakpoints
+
+Liệt kê chính xác Media Queries đã sử dụng.
+
+Ví dụ:
+
+```text
+Mobile:
+Default
+
+Tablet:
+min-width: 768px
+
+Desktop:
+min-width: 1024px
+```
+
+## 5. Responsive Testing
+
+Báo cáo:
+
+```text
+320px  → PASS/FAIL
+375px  → PASS/FAIL
+390px  → PASS/FAIL
+768px  → PASS/FAIL
+1024px → PASS/FAIL
+1440px → PASS/FAIL
+```
+
+## 6. Horizontal Scroll
+
+Nếu phát hiện:
+
+```text
+Viewport:
+Element:
+Nguyên nhân:
+Giải pháp:
+Kết quả sau khi sửa:
+```
+
+Nếu không phát hiện:
+
+```text
+Không phát hiện Horizontal Scroll trong các viewport đã kiểm tra.
+```
+
+## 7. Responsive Bugs
+
+Liệt kê từng lỗi:
+
+```text
+Bug #1
+Viewport:
+Element:
+Nguyên nhân:
+CSS gây lỗi:
+Cách sửa:
+Kết quả:
+
+Bug #2
+...
+```
+
+## 8. Ảnh hưởng sau khi Fix
+
+Kiểm tra xem việc sửa lỗi có ảnh hưởng:
+
+* Mobile.
+* Tablet.
+* Desktop.
+* Large Desktop.
+
+Nếu không ảnh hưởng:
+
+```text
+Không phát hiện regression sau khi kiểm tra lại toàn bộ breakpoint.
+```
+
+---
+
+# 20. QUY TẮC QUAN TRỌNG NHẤT
+
+Không chỉ viết code để đáp ứng checklist.
+
+Hãy thực sự:
+
+**Phân tích project**
+↓
+**Xây dựng Design System**
+↓
+**Chuyển CSS sang Mobile First**
+↓
+**Tạo Media Queries dựa trên layout thực tế**
+↓
+**Kiểm tra Inspect**
+↓
+**Tìm lỗi vỡ khung**
+↓
+**Phân tích nguyên nhân bằng AI**
+↓
+**Fix nguyên nhân gốc**
+↓
+**Inspect lại**
+↓
+**Test toàn bộ breakpoint**
+↓
+**Audit cuối cùng**
+
+Nếu phát hiện vấn đề, phải sửa trước khi báo cáo hoàn thành.
+
+Không được báo "đã hoàn thành" nếu vẫn còn lỗi Responsive rõ ràng.
