@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <!-- 1. Metadata cơ bản & Tối ưu hóa SEO -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio cá nhân của [Họ và Tên của bạn] - Sinh viên năm nhất ngành Công nghệ Thông tin. Nơi trưng bày kỹ năng lập trình web, quá trình học tập và các dự án thực hành bằng thuần HTML và CSS.">
+    <meta name="author" content="[Họ và Tên của bạn]">
+    <title>[Họ và Tên của bạn] | Personal Developer Portfolio (Thuần HTML & CSS)</title>
+    
+    <!-- Liên kết tới file CSS thuần của dự án (Không dùng thư viện ngoài) -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- =========================================================================
+         KHU VỰC 1: HEADER & NAVIGATION (Đầu trang & Điều hướng)
+         - Hamburger Menu THUẦN HTML & CSS (CSS Checkbox Hack):
+           Dùng <input type="checkbox"> kết hợp <label> và CSS :checked, 
+           hoàn toàn không cần JavaScript để đóng mở hay đổi biểu tượng dấu X!
+         ========================================================================= -->
+    <header class="site-header">
+        <div class="container header-container">
+            <h1 class="logo">[Họ và Tên của bạn]</h1>
+
+            <!-- Checkbox ẩn để kích hoạt menu bằng thuần CSS -->
+            <input type="checkbox" id="menu-toggle" class="menu-checkbox" aria-label="Bật tắt menu điều hướng">
+            
+            <!-- Nhãn nút Hamburger 3 vạch (bấm vào sẽ toggle checkbox) -->
+            <label for="menu-toggle" class="hamburger-btn" aria-label="Mở menu điều hướng">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </label>
+
+            <!-- Menu điều hướng chính -->
+            <nav class="main-nav" id="primary-navigation" aria-label="Điều hướng chính của trang web">
+                <ul id="main-nav-list">
+                    <li><a href="#hero">Trang chủ</a></li>
+                    <li><a href="#about">Giới thiệu</a></li>
+                    <li><a href="#skills">Kỹ năng</a></li>
+                    <li><a href="#projects">Dự án</a></li>
+                    <li><a href="#education">Học vấn</a></li>
+                    <li><a href="#contact">Liên hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- =========================================================================
+         KHU VỰC CHÍNH: <main> 
+         ========================================================================= -->
+    <main class="container">
+
+        <!-- =====================================================================
+             KHU VỰC 2: HERO SECTION (Lời chào & Giới thiệu nhanh)
+             - Parallax Background: Thuần CSS @keyframes
+             - Card Flip 3D: Thuần CSS :hover, :focus-within
+             - Typing Effect: Thuần CSS @keyframes typing & blink
+             ===================================================================== -->
+        <section id="hero" class="hero-section hero-parallax" aria-labelledby="hero-title">
+            
+            <!-- Hiệu ứng B: Card Flip 3D (Thuần CSS :hover và :focus-within) -->
+            <div class="flip-card-container" id="profile-card" tabindex="0" role="region" aria-label="Thẻ giới thiệu cá nhân 3D, rê chuột hoặc chọn để lật">
+                <div class="flip-card-inner">
+                    <!-- Mặt trước của thẻ -->
+                    <div class="flip-card-front">
+                        <figure class="profile-figure">
+                            <img src="assets/images/avatar-placeholder.svg" alt="Ảnh chân dung đại diện của [Họ và Tên của bạn]" width="140" height="140">
+                            <figcaption>Ảnh đại diện của [Họ và Tên của bạn]</figcaption>
+                        </figure>
+                        <p class="flip-hint">👆 Rê chuột hoặc chạm để lật</p>
+                    </div>
+
+                    <!-- Mặt sau của thẻ -->
+                    <div class="flip-card-back">
+                        <h4>[Họ và Tên của bạn]</h4>
+                        <p class="flip-role">Web Developer</p>
+                        <p class="flip-desc">Đam mê xây dựng web hiện đại bằng thuần HTML5 & CSS3 chuẩn ngữ nghĩa và responsive.</p>
+                        <div class="flip-links">
+                            <a href="https://github.com/[tai-khoan-github]" target="_blank" rel="noopener noreferrer" class="flip-btn">GitHub</a>
+                            <a href="#contact" class="flip-btn">Liên hệ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-intro">
+                <p class="role-badge">Sinh viên Năm nhất • Ngành Công nghệ Thông tin</p>
+                
+                <!-- Hiệu ứng C: Typing Effect (Máy đánh chữ thuần CSS) -->
+                <h2 id="hero-title">
+                    Xin chào, tôi là [Họ và Tên của bạn]
+                    <span class="typing-wrapper">
+                        <span class="typing-text">Tôi là một Web Developer</span>
+                    </span>
+                </h2>
+
+                <p class="lead-text">
+                    Chào mừng bạn đến với Portfolio cá nhân của tôi! Tôi đam mê lập trình giao diện Web (Frontend), 
+                    đang rèn luyện tư duy lập trình và xây dựng các sản phẩm thực tế theo phương pháp <em>AI-Assisted Development</em>.
+                </p>
+
+                <div class="cta-actions">
+                    <a href="#projects" class="btn btn-primary">Xem các dự án</a>
+                    <a href="#contact" class="btn btn-secondary">Liên hệ với tôi</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             KHU VỰC 3: ABOUT ME (Thông tin bản thân & Định hướng)
+             - Hiệu ứng Scroll Reveal thuần CSS: class .reveal-on-scroll
+             ===================================================================== -->
+        <section id="about" class="section about-section reveal-on-scroll" aria-labelledby="about-title">
+            <h2 id="about-title" class="section-title">Về bản thân tôi</h2>
+            
+            <div class="about-content">
+                <p>
+                    Hiện tại, tôi đang là sinh viên năm nhất chuyên ngành Công nghệ Thông tin tại trường <strong>[Tên trường Đại học/Cao đẳng của bạn]</strong>. 
+                    Tôi bắt đầu tiếp cận với thế giới Web thông qua các ngôn ngữ nền tảng như HTML5, CSS3 và JavaScript.
+                </p>
+                <p>
+                    Mục tiêu ngắn hạn của tôi là nắm vững tư duy xây dựng giao diện chuẩn ngữ nghĩa (Semantic HTML), 
+                    thiết kế giao diện thích ứng đa màn hình (Responsive Design) và làm chủ hệ thống bố cục thuần CSS (Flexbox & Grid).
+                </p>
+
+                <!-- <aside>: Thông tin bổ trợ phương châm học tập -->
+                <aside class="quote-aside" aria-label="Phương châm học tập">
+                    <blockquote>
+                        "Học lập trình không chỉ là ghi nhớ cú pháp, mà là rèn luyện khả năng giải quyết vấn đề, chấp nhận sai sót để hoàn thiện mỗi ngày."
+                    </blockquote>
+                    <cite>— Phương châm học tập của tôi</cite>
+                </aside>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             KHU VỰC 4: SKILLS (Kỹ năng chuyên môn & Thanh tiến trình)
+             - Hiệu ứng Scroll Reveal thuần CSS
+             - Hiệu ứng F: Skill Bar Animation (@keyframes fillBar thuần CSS)
+             ===================================================================== -->
+        <section id="skills" class="section skills-section reveal-on-scroll" aria-labelledby="skills-title">
+            <h2 id="skills-title" class="section-title">Kỹ năng chuyên môn & Công cụ</h2>
+            
+            <div class="skills-grid">
+                <article class="skill-category reveal-on-scroll" style="--stagger-delay: 0.1s;">
+                    <h3>Frontend Nền tảng</h3>
+                    <ul class="skill-list">
+                        <li><strong>HTML5:</strong> Semantic tags, biểu mẫu (Forms), SEO cơ bản, chuẩn Accessibility.</li>
+                        <li><strong>CSS3:</strong> Box Model, Flexbox cơ bản, CSS Variables, Typography.</li>
+                        <li><strong>JavaScript:</strong> Cú pháp ES6+, thao tác cơ bản với DOM, xử lý sự kiện.</li>
+                    </ul>
+                </article>
+
+                <article class="skill-category reveal-on-scroll" style="--stagger-delay: 0.2s;">
+                    <h3>Công cụ & Quy trình</h3>
+                    <ul class="skill-list">
+                        <li><strong>IDE / Editor:</strong> Visual Studio Code (Live Server, Extensions).</li>
+                        <li><strong>Quản lý phiên bản:</strong> Git cơ bản (init, commit, branch) & GitHub.</li>
+                        <li><strong>AI-Assisted:</strong> Prompt engineering, tra cứu tài liệu với AI và kiểm chứng code.</li>
+                    </ul>
+                </article>
+
+                <article class="skill-category reveal-on-scroll" style="--stagger-delay: 0.3s;">
+                    <h3>Kỹ năng mềm</h3>
+                    <ul class="skill-list">
+                        <li>Tư duy giải quyết vấn đề và tự gỡ lỗi (Debugging).</li>
+                        <li>Khả năng đọc hiểu tài liệu kỹ thuật tiếng Anh.</li>
+                        <li>Kỹ năng ghi chép và tài liệu hóa quá trình học (Documentation).</li>
+                    </ul>
+                </article>
+            </div>
+
+            <!-- Hiệu ứng F: Skill Bar Animation (Thanh kỹ năng tự chạy với @keyframes thuần CSS) -->
+            <div class="skill-bars-container reveal-on-scroll" aria-label="Thanh đo mức độ tiếp thu học phần">
+                <h4 class="skill-bars-title">Tiến trình học tập kỹ thuật (Dữ liệu minh họa thực hành):</h4>
+                
+                <div class="skill-progress-item">
+                    <div class="skill-progress-header">
+                        <span>HTML5 Semantic & Cấu trúc Web</span>
+                        <span class="skill-percent-label">85%</span>
+                    </div>
+                    <div class="skill-bar-track" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="HTML5 mức độ 85%">
+                        <div class="skill-bar-fill" style="--target-width: 85%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-progress-item">
+                    <div class="skill-progress-header">
+                        <span>CSS3 Layout (Flexbox & Grid, Responsive)</span>
+                        <span class="skill-percent-label">80%</span>
+                    </div>
+                    <div class="skill-bar-track" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="CSS3 Layout mức độ 80%">
+                        <div class="skill-bar-fill" style="--target-width: 80%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-progress-item">
+                    <div class="skill-progress-header">
+                        <span>JavaScript Nền tảng (DOM Manipulation & Events)</span>
+                        <span class="skill-percent-label">65%</span>
+                    </div>
+                    <div class="skill-bar-track" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" aria-label="JavaScript mức độ 65%">
+                        <div class="skill-bar-fill" style="--target-width: 65%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-progress-item">
+                    <div class="skill-progress-header">
+                        <span>Git & GitHub (Version Control Workflow)</span>
+                        <span class="skill-percent-label">75%</span>
+                    </div>
+                    <div class="skill-bar-track" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="Git và GitHub mức độ 75%">
+                        <div class="skill-bar-fill" style="--target-width: 75%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             KHU VỰC 5: PROJECTS (Các dự án cá nhân & Bài tập học phần)
+             - Hiệu ứng Scroll Reveal thuần CSS
+             ===================================================================== -->
+        <section id="projects" class="section projects-section reveal-on-scroll" aria-labelledby="projects-title">
+            <h2 id="projects-title" class="section-title">Dự án học tập & Thực hành</h2>
+            <p class="section-subtitle">Dưới đây là các dự án tôi đang thực hiện trong quá trình học tập (dữ liệu minh họa thực tế môn học):</p>
+
+            <div class="projects-grid">
+                <!-- Dự án 1: Website Portfolio đang thực hiện -->
+                <article class="project-card reveal-on-scroll" style="--stagger-delay: 0.1s;">
+                    <figure class="project-figure">
+                        <img src="assets/images/project-portfolio-demo.svg" alt="Ảnh minh họa dự án Personal Developer Portfolio" width="300" height="180">
+                        <figcaption>Dự án 1: Giao diện Personal Developer Portfolio</figcaption>
+                    </figure>
+                    <div class="project-details">
+                        <span class="project-tag">Đồ án môn học • 5 tuần</span>
+                        <h3>Personal Developer Portfolio</h3>
+                        <p>
+                            Website giới thiệu bản thân, kỹ năng và dự án cá nhân được xây dựng bằng thuần HTML5 Semantic và CSS3.
+                            Dự án áp dụng phương pháp AI-Assisted Development và quản lý mã nguồn bằng Git/GitHub.
+                        </p>
+                        <p><strong>Công nghệ:</strong> HTML5, CSS3, Flexbox, Grid.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/[tai-khoan-cua-ban]/personal-portfolio" target="_blank" rel="noopener noreferrer">Xem mã nguồn trên GitHub</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Dự án 2: Bài tập thực hành Web tĩnh -->
+                <article class="project-card reveal-on-scroll" style="--stagger-delay: 0.2s;">
+                    <figure class="project-figure">
+                        <img src="assets/images/project-lab-demo.svg" alt="Ảnh minh họa bài tập thực hành thiết kế Web" width="300" height="180">
+                        <figcaption>Dự án 2: Bài tập thực hành trên lớp</figcaption>
+                    </figure>
+                    <div class="project-details">
+                        <span class="project-tag">Bài tập thực hành</span>
+                        <h3>Trang Thực hành Giao diện Web</h3>
+                        <p>
+                            Tập hợp các bài thực hành thiết kế trang web tĩnh trên lớp, rèn luyện kỹ năng định dạng văn bản, 
+                            xử lý bảng biểu, liên kết và chia layout cơ bản.
+                        </p>
+                        <p><strong>Công nghệ:</strong> HTML5, CSS thuần.</p>
+                        <div class="project-links">
+                            <a href="#projects">Xem chi tiết bài tập</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Dự án 3: Bảng tra cứu phím tắt & Git CLI -->
+                <article class="project-card reveal-on-scroll" style="--stagger-delay: 0.3s;">
+                    <figure class="project-figure">
+                        <img src="assets/images/project-git-cheatsheet.svg" alt="Ảnh minh họa bảng tra cứu lệnh Git" width="300" height="180">
+                        <figcaption>Dự án 3: Cheatsheet lệnh Git cho người mới</figcaption>
+                    </figure>
+                    <div class="project-details">
+                        <span class="project-tag">Dự án mini học tập</span>
+                        <h3>Bảng tra cứu lệnh Git cơ bản</h3>
+                        <p>
+                            Trang web tra cứu nhanh các lệnh Git thường dùng (init, add, commit, push, branch) 
+                            giúp sinh viên năm nhất dễ dàng ôn tập và thao tác chuẩn xác.
+                        </p>
+                        <p><strong>Công nghệ:</strong> HTML5 Semantic, Markdown.</p>
+                        <div class="project-links">
+                            <a href="#projects">Đang cập nhật</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             KHU VỰC 6: EDUCATION (Quá trình học tập & Đào tạo)
+             ===================================================================== -->
+        <section id="education" class="section education-section reveal-on-scroll" aria-labelledby="education-title">
+            <h2 id="education-title" class="section-title">Học vấn & Đào tạo</h2>
+
+            <div class="education-timeline">
+                <article class="education-card">
+                    <h3>[Tên trường Đại học / Cao đẳng của bạn]</h3>
+                    <p class="education-period"><strong>Thời gian:</strong> 2026 — Dự kiến 2030 (Sinh viên năm nhất)</p>
+                    <p class="education-major"><strong>Chuyên ngành:</strong> Công nghệ Thông tin / Kỹ thuật Phần mềm</p>
+                    <p>
+                        <strong>Các học phần nền tảng đang tiếp thu:</strong> Thiết kế Web cơ bản, 
+                        Cơ sở lập trình, Toán ứng dụng cho Tin học, Cấu trúc máy tính.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             KHU VỰC 7: CONTACT (Thông tin liên hệ & Biểu mẫu gửi phản hồi)
+             ===================================================================== -->
+        <section id="contact" class="section contact-section reveal-on-scroll" aria-labelledby="contact-title">
+            <h2 id="contact-title" class="section-title">Liên hệ với tôi</h2>
+            <p class="section-subtitle">
+                Nếu bạn có câu hỏi, ý kiến đóng góp hoặc cơ hội học tập/thực tập, vui lòng để lại lời nhắn hoặc gửi thư trực tiếp cho tôi:
+            </p>
+
+            <div class="contact-wrapper">
+                <!-- Thông tin liên hệ nhanh -->
+                <div class="contact-info">
+                    <h3>Kênh kết nối trực tiếp</h3>
+                    <ul class="contact-list">
+                        <li><strong>Email:</strong> <a href="mailto:email-cua-ban@example.com">[email-cua-ban@example.com]</a></li>
+                        <li><strong>GitHub:</strong> <a href="https://github.com/[tai-khoan-github]" target="_blank" rel="noopener noreferrer">github.com/[tai-khoan-github]</a></li>
+                        <li><strong>Địa điểm học tập:</strong> [Thành phố nơi bạn đang theo học, ví dụ: Hà Nội / TP.HCM]</li>
+                    </ul>
+                </div>
+
+                <!-- Biểu mẫu liên hệ (Form) -->
+                <form class="contact-form" action="#" method="POST" aria-label="Biểu mẫu liên hệ cá nhân">
+                    <div class="form-group">
+                        <label for="contact-name">Họ và tên của bạn: <span class="required">*</span></label>
+                        <input type="text" id="contact-name" name="name" required placeholder="Ví dụ: Nguyễn Văn A">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-email">Địa chỉ Email: <span class="required">*</span></label>
+                        <input type="email" id="contact-email" name="email" required placeholder="name@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-subject">Chủ đề trao đổi:</label>
+                        <input type="text" id="contact-subject" name="subject" placeholder="Ví dụ: Góp ý bài tập Web, cơ hội giao lưu học thuật...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-message">Nội dung tin nhắn: <span class="required">*</span></label>
+                        <textarea id="contact-message" name="message" rows="5" required placeholder="Nhập lời nhắn của bạn tại đây..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Gửi tin nhắn</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =========================================================================
+         KHU VỰC 8: FOOTER (Chân trang)
+         ========================================================================= -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <p>&copy; 2026 [Họ và Tên của bạn]. Tất cả quyền được bảo lưu.</p>
+            <p class="footer-note">Website được xây dựng cho học phần Thiết kế Web • Thuần HTML5 & CSS3.</p>
+            <p><a href="#hero" class="back-to-top">↑ Về đầu trang</a></p>
+        </div>
+    </footer>
+
+    <!-- =========================================================================
+         HIỆU ỨNG A: FLOATING ACTION BUTTON (Nút liên hệ nổi thuần CSS)
+         ========================================================================= -->
+    <a href="#contact" class="fab-contact" aria-label="Cuộn nhanh tới phần Liên hệ" title="Liên hệ nhanh">
+        <span class="fab-pulse-ring"></span>
+        <span class="fab-icon">💬</span>
+        <span class="fab-text">Liên hệ</span>
+    </a>
+
+    <!-- File JavaScript cơ bản phục vụ học tập (Console logs & Thống kê ngữ nghĩa) -->
+    <script src="js/main.js"></script>
+</body>
+</html>

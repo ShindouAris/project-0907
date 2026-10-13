@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="600" height="340">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="340" fill="url(#bgGrad2)" />
+  <!-- Khung tài liệu HTML/CSS code -->
+  <rect x="30" y="25" width="540" height="290" rx="8" fill="#111827" stroke="#334155" stroke-width="2" />
+  <!-- Nút cửa sổ editor -->
+  <circle cx="50" cy="45" r="5" fill="#ef4444" />
+  <circle cx="68" cy="45" r="5" fill="#eab308" />
+  <circle cx="86" cy="45" r="5" fill="#22c55e" />
+  <text x="110" y="49" fill="#94a3b8" font-family="monospace" font-size="11">lab-exercises.html</text>
+  <!-- Các dòng code giả lập (mock code syntax) -->
+  <text x="60" y="90" fill="#06b6d4" font-family="monospace" font-size="13">&lt;!DOCTYPE html&gt;</text>
+  <text x="60" y="115" fill="#f43f5e" font-family="monospace" font-size="13">&lt;html <tspan fill="#eab308">lang="vi"</tspan>&gt;</text>
+  <text x="80" y="140" fill="#f43f5e" font-family="monospace" font-size="13">&lt;head&gt; <tspan fill="#64748b">&lt;!-- Metadata &amp; Styles --&gt;</tspan>&lt;/head&gt;</text>
+  <text x="80" y="165" fill="#f43f5e" font-family="monospace" font-size="13">&lt;body&gt;</text>
+  <text x="100" y="190" fill="#22c55e" font-family="monospace" font-size="13">&lt;section <tspan fill="#eab308">class="practice-card"</tspan>&gt;</text>
+  <text x="120" y="215" fill="#94a3b8" font-family="monospace" font-size="13">&lt;h2&gt;Bài tập Thiết kế Web&lt;/h2&gt;</text>
+  <text x="100" y="240" fill="#22c55e" font-family="monospace" font-size="13">&lt;/section&gt;</text>
+  <text x="80" y="265" fill="#f43f5e" font-family="monospace" font-size="13">&lt;/body&gt;</text>
+  <text x="60" y="290" fill="#f43f5e" font-family="monospace" font-size="13">&lt;/html&gt;</text>
+</svg>

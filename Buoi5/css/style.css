@@ -1,0 +1,1241 @@
+/* ==========================================================================
+   Dự án: Personal Developer Portfolio
+   Phiên bản: 100% THUẦN HTML5 & CSS3 (Pure HTML & CSS - Không thư viện ngoài)
+   Bảo toàn: Semantic HTML5, Flexbox/Grid, Design System Variables & Mobile-First
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. DESIGN SYSTEM - HỆ THỐNG BIẾN TOÀN CỤC (:root)
+   -------------------------------------------------------------------------- */
+:root {
+    /* --- A. Bảng màu (Color Palette) --- */
+    --color-bg: #0b0f19;             /* Nền tối chủ đạo của toàn bộ website */
+    --color-surface: #111827;        /* Nền của Header, Footer và các Section */
+    --color-card: #1e293b;           /* Nền cho các khối thẻ Card */
+    --color-card-hover: #24344d;     /* Nền khi hover vào thẻ Card */
+
+    --color-border: #334155;         /* Viền màu tối cơ bản */
+    --color-border-light: #475569;   /* Viền sáng hơn cho trạng thái tương tác */
+
+    --color-primary: #06b6d4;        /* Màu nhấn chủ đạo (Neon Cyan) */
+    --color-primary-hover: #22d3ee;  /* Cyan sáng khi hover */
+    --color-primary-glow: rgba(6, 182, 212, 0.25); /* Vùng sáng khi focus/hover */
+    
+    --color-accent: #10b981;         /* Màu xanh lá ngọc lục bảo (cho thẻ tag trạng thái) */
+    --color-danger: #f43f5e;         /* Màu đỏ cảnh báo */
+
+    --color-text: #f8fafc;           /* Màu chữ chính (tiêu đề, nội dung quan trọng) */
+    --color-text-secondary: #94a3b8; /* Màu chữ phụ (đoạn văn, mô tả dự án) */
+    --color-text-muted: #64748b;     /* Màu chữ trầm (chú thích, copyright) */
+
+    /* --- B. Thang khoảng cách (Spacing Scale) --- */
+    --spacing-xs: 0.25rem;           /* 4px */
+    --spacing-sm: 0.5rem;            /* 8px */
+    --spacing-md: 1rem;              /* 16px */
+    --spacing-lg: 1.5rem;            /* 24px */
+    --spacing-xl: 2rem;              /* 32px */
+    --spacing-2xl: 3rem;             /* 48px */
+    --spacing-3xl: 4rem;             /* 64px */
+
+    /* --- C. Thang kích thước chữ (Typography Scale) --- */
+    --fs-xs: 0.75rem;                /* 12px */
+    --fs-sm: 0.875rem;               /* 14px */
+    --fs-base: 1rem;                 /* 16px */
+    --fs-md: 1.125rem;               /* 18px */
+    --fs-lg: 1.25rem;                /* 20px */
+    --fs-xl: 1.5rem;                 /* 24px */
+    --fs-2xl: 2rem;                  /* 32px */
+    --fs-3xl: 2.5rem;                /* 40px */
+
+    /* --- D. Bo góc (Border Radius) --- */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-full: 9999px;
+
+    /* --- E. Chiều rộng giới hạn & Bố cục --- */
+    --container-max-width: 1060px;
+    --container-padding: var(--spacing-md);
+
+    /* --- F. Hiệu ứng & Chuyển động --- */
+    --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.25);
+    --shadow-glow: 0 0 20px var(--color-primary-glow);
+    --transition-fast: all 0.2s ease-in-out;
+    --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. BOX MODEL & RESET NỀN TẢNG
+   -------------------------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--container-max-width);
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --------------------------------------------------------------------------
+   3. HEADER VÀ HAMBURGER MENU THUẦN HTML & CSS (CSS CHECKBOX HACK)
+   - Ẩn hoàn toàn thẻ <input type="checkbox">
+   - Bấm vào <label class="hamburger-btn"> sẽ kích hoạt :checked
+   - Dùng selector #menu-toggle:checked ~ ... để biến đổi dấu X và mở menu
+   -------------------------------------------------------------------------- */
+.site-header {
+    background-color: rgba(17, 24, 39, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+    position: relative;
+}
+
+.logo {
+    font-size: var(--fs-lg);
+    font-weight: 700;
+    color: var(--color-text);
+    letter-spacing: -0.5px;
+    z-index: 102;
+}
+
+/* Ẩn checkbox điều khiển */
+.menu-checkbox {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Nút Hamburger (Label thuần CSS) */
+.hamburger-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 38px;
+    height: 34px;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 6px;
+    cursor: pointer;
+    z-index: 102;
+    transition: var(--transition-fast);
+}
+
+.hamburger-btn:hover {
+    border-color: var(--color-primary);
+}
+
+.hamburger-line {
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+}
+
+/* Biến đổi Hamburger thành dấu X thuần CSS khi Checkbox được check */
+.menu-checkbox:checked ~ .hamburger-btn .hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.menu-checkbox:checked ~ .hamburger-btn .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.menu-checkbox:checked ~ .hamburger-btn .hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Menu Mobile: Trượt mở mượt mà bằng thuần CSS */
+.main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transition: max-height 0.35s ease, opacity 0.3s ease, padding 0.3s ease;
+    z-index: 101;
+}
+
+/* Mở menu khi Checkbox được check */
+.menu-checkbox:checked ~ .main-nav {
+    max-height: 380px;
+    opacity: 1;
+    pointer-events: auto;
+    padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.main-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    list-style: none;
+    text-align: center;
+}
+
+.main-nav a {
+    display: block;
+    text-decoration: none;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    font-size: var(--fs-base);
+    padding: var(--spacing-sm) 0;
+    border-radius: var(--radius-sm);
+    transition: var(--transition-fast);
+}
+
+.main-nav a:hover,
+.main-nav a:focus {
+    color: var(--color-primary);
+    background-color: rgba(6, 182, 212, 0.08);
+}
+
+/* --------------------------------------------------------------------------
+   4. HERO SECTION & HIỆU ỨNG THUẦN CSS (PARALLAX, CARD FLIP, TYPING)
+   -------------------------------------------------------------------------- */
+main {
+    flex: 1;
+    padding-top: var(--spacing-lg);
+    padding-bottom: var(--spacing-xl);
+}
+
+/* Hiệu ứng Parallax Background thuần CSS */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--spacing-xl);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xl) var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-parallax {
+    background: radial-gradient(circle at 85% 15%, rgba(6, 182, 212, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 15% 85%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
+                var(--color-surface);
+    background-size: 120% 120%;
+    animation: parallaxSubtle 12s ease-in-out infinite alternate;
+}
+
+@keyframes parallaxSubtle {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+/* Hiệu ứng B: Card Flip 3D (Thuần CSS :hover, :focus, :focus-within) */
+.flip-card-container {
+    width: 160px;
+    height: 200px;
+    perspective: 1000px;
+    cursor: pointer;
+    flex-shrink: 0;
+    outline: none;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+/* Lật thẻ 100% thuần CSS */
+.flip-card-container:hover .flip-card-inner,
+.flip-card-container:focus .flip-card-inner,
+.flip-card-container:focus-within .flip-card-inner,
+.flip-card-container:active .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-card);
+}
+
+.flip-card-front {
+    background-color: var(--color-card);
+}
+
+.flip-card-front .profile-figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flip-card-front img {
+    width: 105px;
+    height: 105px;
+    border-radius: var(--radius-full);
+    border: 3px solid var(--color-primary);
+    box-shadow: var(--shadow-glow);
+    object-fit: cover;
+    background-color: var(--color-bg);
+}
+
+.flip-card-front figcaption {
+    display: none;
+}
+
+.flip-hint {
+    font-size: var(--fs-xs);
+    color: var(--color-primary);
+    margin-top: var(--spacing-xs);
+    font-weight: 500;
+}
+
+.flip-card-back {
+    background-color: var(--color-card-hover);
+    border-color: var(--color-primary);
+    transform: rotateY(180deg);
+    gap: var(--spacing-xs);
+    padding: var(--spacing-md);
+}
+
+.flip-card-back h4 {
+    font-size: var(--fs-sm);
+    color: var(--color-text);
+}
+
+.flip-role {
+    font-size: var(--fs-xs);
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.flip-desc {
+    font-size: var(--fs-xs);
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+}
+
+.flip-links {
+    display: flex;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-xs);
+}
+
+.flip-btn {
+    font-size: var(--fs-xs);
+    color: var(--color-bg);
+    background-color: var(--color-primary);
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition-fast);
+}
+
+.flip-btn:hover {
+    background-color: var(--color-primary-hover);
+}
+
+/* Khối giới thiệu Hero */
+.hero-intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    width: 100%;
+}
+
+.role-badge {
+    align-self: center;
+    background-color: rgba(6, 182, 212, 0.1);
+    color: var(--color-primary);
+    border: 1px solid rgba(6, 182, 212, 0.25);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-full);
+}
+
+/* Hiệu ứng C: Typing Effect (Máy đánh chữ thuần CSS @keyframes) */
+.hero-intro h2 {
+    font-size: var(--fs-xl);
+    line-height: 1.35;
+    color: var(--color-text);
+    word-break: break-word;
+}
+
+.typing-wrapper {
+    display: block;
+    margin-top: var(--spacing-xs);
+    color: var(--color-primary);
+}
+
+.typing-text {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid var(--color-primary);
+    width: 0;
+    animation: typing 3s steps(24, end) infinite alternate,
+               blinkCursor 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    0% { width: 0; }
+    50%, 100% { width: 100%; }
+}
+
+@keyframes blinkCursor {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--color-primary); }
+}
+
+.lead-text {
+    color: var(--color-text-secondary);
+    font-size: var(--fs-base);
+    line-height: 1.6;
+}
+
+.cta-actions {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: var(--spacing-sm);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 44px;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: var(--fs-base);
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: var(--transition-base);
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    font-weight: 700;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-hover);
+    box-shadow: 0 4px 18px var(--color-primary-glow);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-text);
+    border-color: var(--color-border);
+}
+
+.btn-secondary:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    background-color: rgba(6, 182, 212, 0.05);
+    transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   5. HIỆU ỨNG SCROLL REVEAL THUẦN CSS (CSS SCROLL-DRIVEN ANIMATIONS)
+   - Sử dụng @keyframes revealUp kết hợp animation-timeline: view()
+   - Hoạt động tự động khi cuộn trang, không cần bất kỳ thư viện JS nào!
+   -------------------------------------------------------------------------- */
+@keyframes revealUp {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reveal-on-scroll {
+    animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: var(--stagger-delay, 0s);
+}
+
+/* Hỗ trợ Scroll-driven Animation của CSS hiện đại (Chrome, Edge, Safari...) */
+@supports (animation-timeline: view()) {
+    .reveal-on-scroll {
+        animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+        animation-timeline: view();
+        animation-range: entry 10% cover 30%;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   6. ABOUT ME SECTION & <aside>
+   -------------------------------------------------------------------------- */
+.section {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg) var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.section-title {
+    font-size: var(--fs-xl);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-xs);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--color-border);
+    position: relative;
+}
+
+.section-title::before {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--color-primary);
+    border-radius: var(--radius-sm);
+}
+
+.section-subtitle {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--fs-sm);
+    line-height: 1.5;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    color: var(--color-text-secondary);
+    font-size: var(--fs-base);
+}
+
+.quote-aside {
+    padding: var(--spacing-md);
+    background-color: var(--color-card);
+    border-left: 4px solid var(--color-primary);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    margin-top: var(--spacing-xs);
+}
+
+.quote-aside blockquote {
+    font-style: italic;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.5;
+    font-size: var(--fs-base);
+}
+
+.quote-aside cite {
+    display: block;
+    font-size: var(--fs-xs);
+    color: var(--color-primary);
+    font-style: normal;
+    text-align: right;
+}
+
+/* --------------------------------------------------------------------------
+   7. SKILLS SECTION & HIỆU ỨNG F: SKILL BAR ANIMATION THUẦN CSS
+   -------------------------------------------------------------------------- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.skill-category {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    transition: var(--transition-base);
+}
+
+.skill-category:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+.skill-category h3 {
+    font-size: var(--fs-md);
+    color: var(--color-primary);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    color: var(--color-text-secondary);
+    font-size: var(--fs-sm);
+}
+
+.skill-list li strong {
+    color: var(--color-text);
+}
+
+/* Thanh kỹ năng tự chạy bằng thuần CSS @keyframes fillBar */
+.skill-bars-container {
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.skill-bars-title {
+    font-size: var(--fs-sm);
+    color: var(--color-primary);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.skill-progress-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.skill-progress-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--fs-sm);
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}
+
+.skill-percent-label {
+    color: var(--color-primary);
+    font-family: var(--font-mono);
+    font-weight: 700;
+}
+
+.skill-bar-track {
+    width: 100%;
+    height: 10px;
+    background-color: var(--color-surface);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+}
+
+.skill-bar-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: var(--radius-full);
+    background: linear-gradient(90deg, var(--color-primary), var(--color-primary-hover));
+    animation: fillBar 1.8s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes fillBar {
+    from { width: 0%; }
+    to { width: var(--target-width); }
+}
+
+/* --------------------------------------------------------------------------
+   8. PROJECTS SECTION (LƯỚI DỰ ÁN & HOVER TRANSITION)
+   -------------------------------------------------------------------------- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+}
+
+.project-card {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-base);
+}
+
+.project-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(6, 182, 212, 0.12);
+}
+
+.project-figure {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background-color: #0f172a;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.project-figure img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-figure img {
+    transform: scale(1.04);
+}
+
+.project-figure figcaption {
+    display: none;
+}
+
+.project-details {
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: var(--spacing-sm);
+}
+
+.project-tag {
+    align-self: flex-start;
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    color: var(--color-accent);
+    background-color: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+}
+
+.project-details h3 {
+    font-size: var(--fs-lg);
+    color: var(--color-text);
+}
+
+.project-details p {
+    font-size: var(--fs-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+.project-details strong {
+    color: var(--color-text);
+}
+
+.project-links {
+    margin-top: auto;
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--color-border);
+}
+
+.project-links a {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: var(--fs-sm);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    transition: var(--transition-fast);
+}
+
+.project-links a:hover {
+    color: var(--color-primary-hover);
+    text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   9. EDUCATION & CONTACT SECTIONS
+   -------------------------------------------------------------------------- */
+.education-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.education-card {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    transition: var(--transition-base);
+}
+
+.education-card:hover {
+    border-color: var(--color-primary);
+}
+
+.education-card h3 {
+    font-size: var(--fs-md);
+    color: var(--color-text);
+}
+
+.education-period,
+.education-major {
+    font-size: var(--fs-sm);
+    color: var(--color-text-secondary);
+}
+
+.education-card p strong {
+    color: var(--color-text);
+}
+
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+}
+
+.contact-info {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.contact-info h3 {
+    font-size: var(--fs-md);
+    color: var(--color-primary);
+}
+
+.contact-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.contact-list li {
+    font-size: var(--fs-sm);
+    color: var(--color-text-secondary);
+    word-break: break-word;
+}
+
+.contact-list a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.contact-list a:hover {
+    text-decoration: underline;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.form-group label {
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.required {
+    color: var(--color-danger);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    min-height: 44px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: var(--fs-base);
+    transition: var(--transition-fast);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--color-text-muted);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-glow);
+}
+
+/* --------------------------------------------------------------------------
+   10. FOOTER & HIỆU ỨNG A: FLOATING ACTION BUTTON (FAB)
+   -------------------------------------------------------------------------- */
+.site-footer {
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    padding: var(--spacing-xl) 0;
+    margin-top: auto;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: var(--fs-sm);
+}
+
+.back-to-top {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    transition: var(--transition-fast);
+}
+
+.back-to-top:hover {
+    color: var(--color-primary-hover);
+    text-decoration: underline;
+}
+
+/* Nút liên hệ nổi cố định (Thuần CSS position: fixed) */
+.fab-contact {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    padding: 0.75rem 1.15rem;
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: var(--fs-sm);
+    box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+    transition: var(--transition-base);
+}
+
+.fab-contact:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(6, 182, 212, 0.6);
+}
+
+.fab-icon {
+    font-size: 1.15rem;
+}
+
+/* Sóng xung kích Pulse thuần CSS */
+.fab-pulse-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-full);
+    border: 2px solid var(--color-primary);
+    animation: fabPulse 2.2s infinite ease-out;
+    pointer-events: none;
+}
+
+@keyframes fabPulse {
+    0% { transform: scale(0.98); opacity: 0.9; }
+    60% { transform: scale(1.35); opacity: 0; }
+    100% { transform: scale(0.98); opacity: 0; }
+}
+
+/* --------------------------------------------------------------------------
+   11. MEDIA QUERIES (MOBILE FIRST -> TABLET & DESKTOP)
+   -------------------------------------------------------------------------- */
+
+/* --- TABLET BREAKPOINT (MIN-WIDTH: 768PX) --- */
+@media (min-width: 768px) {
+    :root {
+        --container-padding: var(--spacing-lg);
+    }
+
+    /* Ẩn hoàn toàn nút hamburger trên màn hình lớn */
+    .hamburger-btn,
+    .menu-checkbox {
+        display: none;
+    }
+
+    /* Menu ngang trên Desktop */
+    .main-nav {
+        position: static;
+        width: auto;
+        background-color: transparent;
+        box-shadow: none;
+        border-bottom: none;
+        max-height: none;
+        opacity: 1;
+        pointer-events: auto;
+        padding: 0;
+    }
+
+    .main-nav ul {
+        flex-direction: row;
+        gap: var(--spacing-lg);
+    }
+
+    .main-nav a {
+        font-size: var(--fs-base);
+        padding: var(--spacing-xs) 0;
+        position: relative;
+    }
+
+    .main-nav a:hover::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--color-primary);
+        border-radius: var(--radius-sm);
+    }
+
+    /* Section & Hero chuyển sang hàng ngang */
+    .section {
+        padding: var(--spacing-xl);
+        margin-bottom: var(--spacing-2xl);
+        border-radius: var(--radius-lg);
+    }
+
+    .section-title {
+        font-size: var(--fs-2xl);
+    }
+
+    .hero-section {
+        flex-direction: row;
+        text-align: left;
+        gap: var(--spacing-xl);
+        padding: var(--spacing-2xl) var(--spacing-xl);
+        border-radius: var(--radius-lg);
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    .flip-card-container {
+        width: 180px;
+        height: 220px;
+    }
+
+    .flip-card-front img {
+        width: 125px;
+        height: 125px;
+    }
+
+    .hero-intro {
+        align-items: flex-start;
+    }
+
+    .role-badge {
+        align-self: flex-start;
+    }
+
+    .hero-intro h2 {
+        font-size: var(--fs-2xl);
+    }
+
+    .typing-wrapper {
+        display: inline-block;
+        margin-top: 0;
+        margin-left: 0.35rem;
+    }
+
+    .cta-actions {
+        flex-direction: row;
+        width: auto;
+    }
+
+    .btn {
+        width: auto;
+    }
+
+    /* Skills & Projects: 2 Cột trên Tablet */
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+    }
+
+    .skill-category,
+    .education-card,
+    .contact-info {
+        padding: var(--spacing-lg);
+    }
+}
+
+/* --- DESKTOP BREAKPOINT (MIN-WIDTH: 1024PX) --- */
+@media (min-width: 1024px) {
+    .hero-section {
+        gap: var(--spacing-2xl);
+        padding: var(--spacing-3xl);
+    }
+
+    .flip-card-container {
+        width: 190px;
+        height: 235px;
+    }
+
+    .flip-card-front img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .hero-intro h2 {
+        font-size: var(--fs-3xl);
+    }
+
+    /* Skills & Projects: 3 Cột trên Desktop */
+    .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-lg);
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-lg);
+    }
+
+    .project-card:hover {
+        transform: translateY(-4px);
+    }
+
+    /* Contact: 2 Cột song song */
+    .contact-wrapper {
+        grid-template-columns: 1fr 1.35fr;
+        gap: var(--spacing-2xl);
+        align-items: start;
+    }
+
+    .contact-info {
+        padding: var(--spacing-xl);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   12. ACCESSIBILITY & PREFERS-REDUCED-MOTION
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .typing-text {
+        border-right: none !important;
+        animation: none !important;
+        width: 100% !important;
+    }
+
+    .hero-parallax {
+        animation: none !important;
+    }
+
+    .fab-pulse-ring {
+        display: none !important;
+    }
+
+    .skill-bar-fill {
+        animation: none !important;
+        width: var(--target-width) !important;
+    }
+
+    .reveal-on-scroll {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
