@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="600" height="340">
+  <defs>
+    <linearGradient id="bgGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="340" fill="url(#bgGrad3)" />
+  <!-- Khung Terminal -->
+  <rect x="30" y="25" width="540" height="290" rx="8" fill="#0b0f19" stroke="#334155" stroke-width="2" />
+  <!-- Nút cửa sổ terminal -->
+  <circle cx="50" cy="45" r="5" fill="#ef4444" />
+  <circle cx="68" cy="45" r="5" fill="#eab308" />
+  <circle cx="86" cy="45" r="5" fill="#22c55e" />
+  <text x="110" y="49" fill="#94a3b8" font-family="monospace" font-size="11">bash - Git Cheatsheet</text>
+  <!-- Các dòng lệnh Git minh họa -->
+  <text x="50" y="90" fill="#22c55e" font-family="monospace" font-size="13">$ git init</text>
+  <text x="70" y="112" fill="#64748b" font-family="monospace" font-size="11">Initialized empty Git repository in D:/portfolio/.git/</text>
+  <text x="50" y="142" fill="#22c55e" font-family="monospace" font-size="13">$ git status</text>
+  <text x="70" y="164" fill="#06b6d4" font-family="monospace" font-size="11">On branch main - nothing to commit, working tree clean</text>
+  <text x="50" y="194" fill="#22c55e" font-family="monospace" font-size="13">$ git add . &amp;&amp; git commit -m "feat: semantic layout"</text>
+  <text x="70" y="216" fill="#eab308" font-family="monospace" font-size="11">[main 4f1a8c9] feat: semantic layout</text>
+  <text x="50" y="246" fill="#22c55e" font-family="monospace" font-size="13">$ git push -u origin main</text>
+  <text x="70" y="268" fill="#22d3ee" font-family="monospace" font-size="11">To github.com/user/portfolio.git - Branch 'main' set up.</text>
+</svg>
