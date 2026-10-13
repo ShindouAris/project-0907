@@ -1,0 +1,748 @@
+/* ==========================================================================
+   1. CSS VARIABLES (HỆ THỐNG BIẾN TOÀN CỤC)
+   - Lưu trữ bảng màu, font chữ, độ bo cong và kích thước tái sử dụng.
+   - Sử dụng biến (custom properties) giúp dễ dàng đổi theme và bảo trì code.
+   ========================================================================== */
+:root {
+  /* Bảng màu chủ đạo (Tech Minimalist Dark Palette) */
+  --bg-primary: #0b0f19;         /* Màu nền sâu cho toàn trang */
+  --bg-surface: #111827;         /* Màu nền thẻ/khối nổi (card surface) */
+  --bg-surface-hover: #1f293d;   /* Màu nền khi hover vào thẻ */
+  --bg-surface-elevated: #1e293b;/* Màu nền cho thành phần nổi bật hơn */
+  
+  /* Màu viền (Borders & Dividers) */
+  --border-color: #1e293b;       /* Viền nhẹ nhàng hòa vào nền */
+  --border-subtle: rgba(255, 255, 255, 0.08); /* Viền mờ kính */
+  --border-hover: #38bdf8;       /* Viền sáng màu cyan khi focus/hover */
+
+  /* Màu chữ (Typography) */
+  --text-main: #f8fafc;          /* Chữ tiêu đề và nội dung chính (trắng kem) */
+  --text-muted: #94a3b8;         /* Chữ phụ, mô tả, chú thích (xám xanh) */
+  --text-dim: #64748b;           /* Chữ mờ hơn cho metadata, copyright */
+
+  /* Màu điểm nhấn (Accent Colors) */
+  --accent-cyan: #38bdf8;        /* Xanh dương sáng (tech, terminal, link) */
+  --accent-indigo: #6366f1;      /* Xanh chàm hiện đại */
+  --accent-green: #10b981;       /* Xanh ngọc thể hiện trạng thái hoạt động */
+  --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #6366f1 100%);
+
+  /* Typography */
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+
+  /* Hiệu ứng bóng (Box Shadows) */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 20px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.15);
+  --shadow-glow: 0 0 25px rgba(56, 189, 248, 0.25);
+
+  /* Bán kính bo góc (Border Radius) */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+
+  /* Tốc độ chuyển động (Transitions) */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.4s ease;
+
+  /* Kích thước khung nhìn */
+  --container-max-width: 1080px;
+}
+
+/* ==========================================================================
+   2. RESET & GLOBAL STYLES (CHUẨN HÓA CƠ BẢN)
+   - Box-sizing border-box: Giúp padding và border không làm nở chiều rộng thật.
+   - Smooth scroll: Cuộn trang mượt mà khi nhấn vào các anchor link (#hero, #about).
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Bù đắp khoảng trống cho thanh navbar cố định (sticky) */
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-main);
+  background-color: var(--bg-primary);
+  /* Nền chấm lưới (dot-grid) tinh tế mang phong cách kỹ thuật */
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Khung chứa trung tâm - giới hạn chiều rộng và căn giữa trang */
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Định dạng hình ảnh responsive tự co giãn */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Định dạng liên kết cơ bản */
+a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+a:hover {
+  color: #7dd3fc;
+  text-decoration: underline;
+}
+
+/* Trạng thái tập trung (Focus State) cho Accessibility:
+   - Dùng :focus-visible để hiện viền khi người dùng dùng bàn phím (Tab).
+   - Tôn trọng người dùng khiếm thị hoặc thao tác không chuột. */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+/* ==========================================================================
+   3. HEADER & NAVBAR (THANH ĐIỀU HƯỚNG)
+   - Dùng position: sticky để thanh menu luôn ghim ở mép trên khi cuộn trang.
+   - Dùng backdrop-filter: blur() tạo hiệu ứng kính mờ thời thượng (glassmorphism).
+   - Dùng Flexbox để căn chỉnh tên tác giả bên trái và menu bên phải.
+   ========================================================================== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(11, 15, 25, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 1rem 0;
+  transition: background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Phần thương hiệu cá nhân ở Header */
+.branding h1 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.branding .tagline {
+  font-size: 0.825rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+  max-width: 480px;
+  line-height: 1.4;
+}
+
+/* Thanh menu điều hướng (Nav) */
+nav ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+nav ul li a {
+  display: inline-block;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+/* Trạng thái Hover / Active trên link menu */
+nav ul li a:hover {
+  color: var(--text-main);
+  background-color: rgba(255, 255, 255, 0.06);
+  text-decoration: none;
+}
+
+nav ul li a:active {
+  transform: scale(0.96);
+}
+
+/* ==========================================================================
+   4. MAIN CONTENT & SECTIONS CHUNG
+   - Mỗi section có khoảng cách dọc (padding) thoáng đãng, cân đối.
+   - Tiêu đề section (h2) có thanh gạch gradient điểm nhấn.
+   ========================================================================== */
+main {
+  padding-top: 1.5rem;
+  padding-bottom: 4rem;
+}
+
+section {
+  padding: 3.5rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Bỏ viền gạch ở section cuối cùng */
+section:last-of-type {
+  border-bottom: none;
+}
+
+/* Tiêu đề mục lớn (h2) */
+section h2 {
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+/* Đường gạch dưới thanh lịch cho tiêu đề */
+section h2::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--accent-gradient);
+  border-radius: var(--radius-full);
+  margin-top: 0.4rem;
+}
+
+/* Tiêu đề cấp nhỏ hơn (h3) */
+section h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 1.25rem 0 0.75rem 0;
+}
+
+/* Đoạn văn mô tả chung */
+section > p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+  max-width: 780px;
+}
+
+/* ==========================================================================
+   5. HERO SECTION (GIỚI THIỆU TỔNG QUAN)
+   - Layout nổi bật với hộp giới thiệu phong cách terminal / dashboard.
+   - Thẻ hiển thị trạng thái "Status Badge" với đèn LED xanh nhấp nháy.
+   ========================================================================== */
+#hero {
+  padding-top: 2rem;
+  padding-bottom: 3.5rem;
+}
+
+.hero-card {
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.4) 0%, rgba(17, 24, 39, 0.6) 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Vệt sáng trang trí ở góc thẻ Hero */
+.hero-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+#hero h2 {
+  font-size: 2.25rem;
+  line-height: 1.25;
+  margin-bottom: 1.25rem;
+}
+
+#hero h2::after {
+  display: none; /* Thẻ hero đã có thiết kế card riêng, không cần gạch dưới */
+}
+
+.hero-desc {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 1.75rem;
+}
+
+/* Khối trạng thái (Status Box) */
+.status-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.6rem 1.15rem;
+  background-color: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  color: #a7f3d0;
+}
+
+/* Đèn LED nhấp nháy mô phỏng hệ thống online */
+.status-dot {
+  width: 9px;
+  height: 9px;
+  background-color: var(--accent-green);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent-green);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+}
+
+/* ==========================================================================
+   6. ABOUT SECTION (TRIẾT LÝ LẬP TRÌNH)
+   - Sử dụng CSS Grid cho danh sách phong cách làm việc để hiển thị dạng thẻ.
+   - Mỗi phong cách là một thẻ với viền và nền riêng biệt.
+   ========================================================================== */
+.about-intro {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.75rem 2rem;
+  margin-bottom: 2rem;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+/* Lý do dùng CSS Grid:
+   - Dễ dàng chia 3 cột cân đối trên màn hình lớn và tự co về 1 cột trên điện thoại.
+   - `grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))` giúp responsive
+     hoàn toàn tự động mà không sợ bị tràn lề. */
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  list-style: none;
+  margin-top: 1.5rem;
+}
+
+.philosophy-item {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.philosophy-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-sm);
+}
+
+.philosophy-item strong {
+  display: block;
+  color: var(--text-main);
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+}
+
+.philosophy-item p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   7. SKILLS SECTION (BỘ KỸ NĂNG & CÔNG CỤ)
+   - Sử dụng CSS Grid để tạo bố cục 3 cột thẻ cho 3 nhóm kỹ năng.
+   - Các danh sách kỹ năng bên trong chuyển thành dạng thẻ chip dễ nhìn.
+   ========================================================================== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.skill-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+}
+
+.skill-card:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.skill-card h3 {
+  font-size: 1.15rem;
+  color: var(--accent-cyan);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skill-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.skill-list li {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-left: 3px solid var(--accent-indigo);
+  padding: 0.6rem 0.85rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  transition: background-color var(--transition-fast);
+}
+
+.skill-list li:hover {
+  background-color: rgba(255, 255, 255, 0.07);
+  color: var(--text-main);
+}
+
+/* ==========================================================================
+   8. PROJECTS SECTION (DANH SÁCH DỰ ÁN NỔI BẬT)
+   - Mỗi dự án là một thẻ <article> độc lập.
+   - Khung ảnh <figure> có hiệu ứng zoom nhẹ khi hover và bảo đảm tỷ lệ 16:9.
+   ========================================================================== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Thẻ Article dự án */
+.project-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Khung bọc ảnh minh họa (<figure>) */
+.project-card figure {
+  position: relative;
+  overflow: hidden;
+  background-color: #000;
+  aspect-ratio: 16 / 9;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.project-card figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.project-card:hover figure img {
+  transform: scale(1.05); /* Phóng to ảnh nhẹ khi rê chuột vào thẻ */
+}
+
+/* Chú thích hình ảnh (<figcaption>) */
+.project-card figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(0deg, rgba(11, 15, 25, 0.9) 0%, transparent 100%);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  padding: 0.75rem 1rem 0.5rem;
+}
+
+/* Phần nội dung chi tiết bên trong thẻ dự án */
+.project-body {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Giúp đẩy thông tin công nghệ và nút bấm luôn nằm thẳng đáy */
+}
+
+.project-card h3 {
+  font-size: 1.35rem;
+  margin-top: 0;
+  margin-bottom: 0.85rem;
+  color: var(--text-main);
+}
+
+.project-card p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.project-card p strong {
+  color: var(--text-main);
+}
+
+/* Thẻ hiển thị công nghệ (Tech Stack Badge) */
+.project-tech {
+  margin-top: auto; /* Đẩy xuống sát nút bấm */
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.85rem;
+  color: var(--accent-cyan);
+  font-family: var(--font-mono);
+}
+
+/* Nút bấm hành động (Button / Link CTA) */
+.project-actions {
+  margin-top: 1rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-surface-elevated);
+  color: var(--text-main);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: var(--accent-cyan);
+  color: #0b0f19;
+  border-color: var(--accent-cyan);
+  text-decoration: none;
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   9. CONTACT SECTION (KẾT NỐI & LIÊN HỆ)
+   - Sử dụng thẻ <address> được style dạng thẻ card sang trọng.
+   - Các dòng email, github, linkedin hiển thị dưới dạng hàng thông tin trực quan.
+   ========================================================================== */
+#contact {
+  padding-bottom: 5rem;
+}
+
+.contact-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  max-width: 820px;
+}
+
+/* Định dạng cho thẻ chuẩn HTML5 <address> */
+address {
+  font-style: normal; /* Xóa chữ nghiêng mặc định của trình duyệt */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.contact-item {
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.contact-item:hover {
+  border-color: var(--border-hover);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.contact-item strong {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+}
+
+.contact-item a,
+.contact-item span {
+  font-size: 0.95rem;
+  font-weight: 500;
+  word-break: break-all;
+}
+
+/* ==========================================================================
+   10. FOOTER (CHÂN TRANG)
+   - Flexbox chia đều 2 bên: Bản quyền & Nút lên đầu trang.
+   - Nhẹ nhàng, không làm sao nhãng nội dung chính.
+   ========================================================================== */
+footer {
+  background-color: #070a11;
+  border-top: 1px solid var(--border-subtle);
+  padding: 2rem 0;
+  font-size: 0.875rem;
+  color: var(--text-dim);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-inner a {
+  color: var(--text-muted);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all var(--transition-fast);
+}
+
+.footer-inner a:hover {
+  color: var(--text-main);
+  border-color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   11. RESPONSIVE MEDIA QUERIES (TƯƠNG THÍCH ĐA THIẾT BỊ)
+   - Breakpoint 768px: Chuyển đổi giữa Desktop/Tablet sang Mobile.
+   - Breakpoint 480px: Tối ưu khoảng cách và kích thước font cho điện thoại nhỏ.
+   ========================================================================== */
+
+/* Tablet & Mobile lớn (< 768px) */
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 130px; /* Thanh header có thể xếp dòng nên cần bù nhiều hơn */
+  }
+
+  /* Header xếp dọc khi menu không đủ chỗ dàn ngang */
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    width: 100%;
+  }
+
+  nav ul li a {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.85rem;
+  }
+
+  #hero h2 {
+    font-size: 1.75rem;
+  }
+
+  .hero-card {
+    padding: 1.5rem;
+  }
+
+  .skills-grid,
+  .projects-grid {
+    grid-template-columns: 1fr; /* Dự án và kỹ năng xếp 1 cột trên màn hình nhỏ */
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/* Màn hình điện thoại nhỏ (< 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  section {
+    padding: 2.5rem 0;
+  }
+
+  section h2 {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    width: 100%; /* Nút full width trên điện thoại giúp dễ chạm bấm */
+  }
+}
