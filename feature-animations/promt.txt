@@ -1,0 +1,36 @@
+Hãy đóng vai trò là một Chuyên gia Lập trình Front-end (Senior Front-end Developer). Tôi cần bạn viết mã nguồn HTML và CSS thuần (không dùng thư viện ngoài) để tạo ra 6 thành phần giao diện hiện đại, mượt mà dưới đây. 
+
+Yêu cầu chung:
+- Mã nguồn sạch, chuẩn Semantic HTML5 và CSS3 hiện đại (ưu tiên sử dụng Flexbox/Grid, CSS Variables để dễ quản lý màu sắc).
+- Phải có tính năng Responsive (hiển thị tốt trên cả Mobile và Desktop).
+- Viết tất cả CSS vào một khối <style> chung hoặc tách biệt rõ ràng để tôi dễ dàng copy-paste.
+- Sử dụng hiệu ứng chuyển động (transition, animation) mượt mà, tốc độ vừa phải.
+
+Chi tiết 6 thành phần cần tạo:
+
+1. Floating Action Button (FAB):
+- Một nút hình tròn chứa chữ "Liên hệ" (hoặc icon) cố định ở góc dưới cùng bên phải màn hình.
+- Có hiệu ứng "phập phồng" (pulse animation) liên tục bằng CSS `@keyframes` để thu hút sự chú ý một cách tinh tế (không bị giật lắc).
+
+2. Card Flip Effect (Thẻ nhân sự lật mặt):
+- Mặt trước: Hiển thị ảnh đại diện, Tên và Chức vụ.
+- Mặt sau: Hiển thị thông tin liên hệ (Email, Số điện thoại, Mạng xã hội).
+- Khi người dùng hover chuột vào, thẻ sẽ lật 180 độ theo trục dọc (Y-axis) với hiệu ứng 3D mượt mà (`perspective`, `backface-visibility: hidden`).
+
+3. Typing Effect (Hiệu ứng chữ tự gõ - CHỈ DÙNG CSS):
+- Tạo hiệu ứng chữ đang tự gõ cho dòng văn bản: "Tôi là một Web Developer...".
+- Yêu cầu KHÔNG dùng JavaScript. Sử dụng hiệu ứng `@keyframes` thay đổi chiều rộng (`width`) và hiệu ứng nhấp nháy cho con trỏ văn bản (`border-right`).
+
+4. Parallax Image (Banner cuộn nền chậm):
+- Một phần banner lớn có chứa tiêu đề và nút kêu gọi hành động (CTA).
+- Sử dụng thuộc tính `background-attachment: fixed` để khi cuộn trang, ảnh nền sẽ di chuyển chậm hơn phần nội dung chữ phía trên, tạo cảm giác chiều sâu.
+
+5. Modern Hamburger Menu (Menu ba gạch chuyển thành X):
+- Tạo một nút bấm Menu gồm 3 đường gạch ngang độc lập bằng CSS.
+- Khi thêm class `.open` hoặc khi hover (bạn hãy xử lý bằng CSS hover hoặc cung cấp 1 dòng JS click nhỏ nếu cần, nhưng ưu tiên diễn hoạt bằng CSS Transitions), 3 đường gạch này sẽ biến đổi mượt mà thành dấu "X" (đường giữa biến mất, 2 đường còn lại xoay chéo).
+
+6. Skill Bar Animation (Thanh kỹ năng tự chạy):
+- Tạo danh sách các thanh kỹ năng (Ví dụ: HTML 90%, CSS 85%, JavaScript 80%).
+- Khi trang được tải, phần màu nền đại diện cho phần trăm kỹ năng sẽ tự động chạy mượt mà từ 0% đến giá trị đích (Sử dụng CSS `@keyframes animation` kích hoạt ngay khi load).
+
+Hãy cung cấp cho tôi cấu trúc HTML hoàn chỉnh và đoạn CSS tương ứng cho từng thành phần, có chú thích (comment) rõ ràng bằng tiếng Việt để tôi dễ hiểu và tùy chỉnh.

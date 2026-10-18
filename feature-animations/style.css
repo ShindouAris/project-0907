@@ -1,0 +1,663 @@
+/* =========================================================
+   BẢNG MÀU VÀ THIẾT LẬP CHUNG
+   ========================================================= */
+:root {
+    color-scheme: light;
+    --color-bg: #f6f7fb;
+    --color-surface: #ffffff;
+    --color-text: #171a2b;
+    --color-muted: #74798e;
+    --color-border: #e7e9f1;
+    --color-primary: #7662f6;
+    --color-secondary: #b46cf4;
+    --gradient: linear-gradient(120deg, var(--color-primary), var(--color-secondary));
+    --shadow-card: 0 18px 55px rgb(33 31 75 / 9%);
+    --radius: 1.5rem;
+    --ease: 280ms cubic-bezier(.2, .75, .25, 1);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+}
+
+body {
+    min-width: 320px;
+    margin: 0;
+    color: var(--color-text);
+    background:
+        radial-gradient(ellipse at 8% 5%, rgb(118 98 246 / 8%), transparent 28rem),
+        var(--color-bg);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.6;
+    transition: color var(--ease), background-color var(--ease);
+}
+
+a {
+    color: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+    outline: 3px solid rgb(118 98 246 / 70%);
+    outline-offset: 4px;
+}
+
+/* =========================================================
+   HEADER VÀ MENU HAMBURGER
+   ========================================================= */
+.site-header {
+    position: sticky;
+    z-index: 10;
+    top: 0;
+    display: flex;
+    min-height: 76px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.85rem max(5vw, calc((100vw - 1120px) / 2));
+    border-bottom: 1px solid rgb(231 233 241 / 75%);
+    background: rgb(255 255 255 / 84%);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.brand-mark {
+    display: grid;
+    width: 2.25rem;
+    aspect-ratio: 1;
+    place-items: center;
+    border-radius: 0.75rem;
+    color: #fff;
+    background: var(--gradient);
+}
+
+.site-nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.8rem, 3vw, 2rem);
+}
+
+.site-nav > a {
+    color: var(--color-muted);
+    font-size: 0.92rem;
+    font-weight: 650;
+    text-decoration: none;
+    transition: color var(--ease);
+}
+
+.site-nav > a:hover {
+    color: var(--color-primary);
+}
+
+.theme-toggle,
+.menu-toggle {
+    display: grid;
+    width: 2.65rem;
+    height: 2.65rem;
+    place-items: center;
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    color: var(--color-text);
+    background: var(--color-surface);
+    cursor: pointer;
+    transition: transform var(--ease), background-color var(--ease);
+}
+
+.theme-toggle:hover,
+.menu-toggle:hover {
+    transform: translateY(-2px);
+}
+
+.theme-toggle {
+    font-size: 1.3rem;
+}
+
+.menu-toggle {
+    display: none;
+    position: relative;
+    padding: 0;
+}
+
+/* Ba gạch chuyển thành dấu X nhờ xoay hai gạch ngoài và ẩn gạch giữa. */
+.menu-toggle span {
+    position: absolute;
+    width: 1.15rem;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transition: transform var(--ease), opacity var(--ease);
+}
+
+.menu-toggle span:first-child {
+    transform: translateY(-6px);
+}
+
+.menu-toggle span:last-child {
+    transform: translateY(6px);
+}
+
+.menu-toggle.open span:first-child {
+    transform: rotate(45deg);
+}
+
+.menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.open span:last-child {
+    transform: rotate(-45deg);
+}
+
+/* =========================================================
+   BANNER PARALLAX VÀ HIỆU ỨNG CHỮ TỰ GÕ
+   ========================================================= */
+.hero {
+    position: relative;
+    display: grid;
+    min-height: min(680px, 78vh);
+    align-items: center;
+    overflow: hidden;
+    isolation: isolate;
+    padding: clamp(4rem, 11vw, 8rem) max(7vw, calc((100vw - 1120px) / 2));
+    color: #fff;
+    background:
+        linear-gradient(90deg, rgb(13 16 39 / 91%) 0%, rgb(21 19 55 / 78%) 54%, rgb(33 21 66 / 42%) 100%),
+        url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=2000&q=85") center 48% / cover no-repeat;
+    background-attachment: fixed;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    width: min(680px, 100%);
+}
+
+.eyebrow {
+    margin: 0 0 0.8rem;
+    color: var(--color-primary);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.17em;
+}
+
+.hero .eyebrow {
+    color: #c2b8ff;
+}
+
+.hero h1 {
+    margin: 0;
+    font-size: clamp(2.7rem, 7vw, 5.7rem);
+    font-weight: 850;
+    letter-spacing: -0.065em;
+    line-height: 1.04;
+}
+
+.hero-description {
+    max-width: 36rem;
+    margin: 1.4rem 0 1rem;
+    color: rgb(255 255 255 / 78%);
+    font-size: clamp(1rem, 2vw, 1.15rem);
+}
+
+.typing-line {
+    width: fit-content;
+    max-width: 100%;
+    margin: 1.2rem 0 2rem;
+    overflow: hidden;
+    border-right: 2px solid #c2b8ff;
+    color: #e2ddff;
+    font-size: clamp(0.95rem, 2.4vw, 1.15rem);
+    font-weight: 700;
+    white-space: nowrap;
+    animation: typing 3.4s steps(31, end) 400ms both, caret-blink 750ms step-end infinite;
+}
+
+/* Chỉ CSS: mở rộng vùng chữ theo từng bước và chớp nháy dấu caret. */
+@keyframes typing {
+    from { max-width: 0; }
+    to { max-width: 100%; }
+}
+
+@keyframes caret-blink {
+    50% { border-color: transparent; }
+}
+
+.button {
+    display: inline-flex;
+    min-height: 3.2rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    padding: 0.75rem 1.3rem;
+    border-radius: 999px;
+    font-weight: 750;
+    text-decoration: none;
+    transition: transform var(--ease), box-shadow var(--ease);
+}
+
+.button:hover {
+    transform: translateY(-3px);
+}
+
+.button-primary {
+    color: #fff;
+    background: var(--gradient);
+    box-shadow: 0 10px 28px rgb(118 98 246 / 33%);
+}
+
+.hero-orb {
+    position: absolute;
+    z-index: 0;
+    width: clamp(11rem, 25vw, 22rem);
+    aspect-ratio: 1;
+    border: 1px solid rgb(255 255 255 / 16%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero-orb-one {
+    top: 12%;
+    right: 12%;
+    box-shadow: 0 0 0 35px rgb(255 255 255 / 3%), 0 0 0 70px rgb(255 255 255 / 2%);
+}
+
+.hero-orb-two {
+    right: 29%;
+    bottom: -40%;
+    width: 12rem;
+    background: rgb(180 108 244 / 10%);
+    filter: blur(1px);
+}
+
+/* =========================================================
+   NỘI DUNG VÀ THẺ NHÂN SỰ LẬT 3D
+   ========================================================= */
+.content-section {
+    width: min(100% - 2rem, 980px);
+    margin: 0 auto;
+    padding: clamp(4rem, 8vw, 6.5rem) 0;
+}
+
+.section-heading {
+    max-width: 38rem;
+    margin: 0 auto 2.4rem;
+    text-align: center;
+}
+
+.section-heading h2 {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 3.1rem);
+    letter-spacing: -0.045em;
+    line-height: 1.15;
+}
+
+.section-heading > p:last-child {
+    margin: 0.85rem 0 0;
+    color: var(--color-muted);
+}
+
+.flip-card {
+    width: min(100%, 360px);
+    height: 440px;
+    margin: 0 auto;
+    perspective: 1100px;
+    cursor: pointer;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 750ms cubic-bezier(.2, .7, .2, 1);
+}
+
+.flip-card:hover .flip-card-inner,
+.flip-card:focus .flip-card-inner,
+.flip-card:focus-within .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-face {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.flip-card-front {
+    flex-direction: column;
+    padding: 1.25rem;
+}
+
+.profile-photo {
+    width: 100%;
+    height: 255px;
+    object-fit: cover;
+    object-position: center 38%;
+    border-radius: 1rem;
+}
+
+.profile-tag {
+    align-self: flex-start;
+    margin: 1.1rem 0 0.2rem;
+    color: var(--color-primary);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+}
+
+.flip-card-front h3,
+.flip-card-back h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.flip-card-front > p {
+    margin: 0.1rem 0 0;
+    color: var(--color-muted);
+}
+
+.flip-hint {
+    position: absolute;
+    right: 1.2rem;
+    bottom: 1rem;
+    color: var(--color-muted);
+    font-size: 0.72rem;
+}
+
+.flip-card-back {
+    flex-direction: column;
+    gap: 0.65rem;
+    padding: 2rem;
+    transform: rotateY(180deg);
+    background:
+        radial-gradient(circle at top right, rgb(180 108 244 / 14%), transparent 45%),
+        var(--color-surface);
+}
+
+.flip-card-back .eyebrow {
+    margin: 0;
+    text-align: center;
+}
+
+.back-icon {
+    display: grid;
+    width: 3.5rem;
+    aspect-ratio: 1;
+    place-items: center;
+    border-radius: 1.1rem;
+    color: #fff;
+    background: var(--gradient);
+    font-size: 1.5rem;
+}
+
+.flip-card-back a {
+    color: var(--color-muted);
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: color var(--ease);
+}
+
+.flip-card-back a:hover {
+    color: var(--color-primary);
+}
+
+/* =========================================================
+   THANH KỸ NĂNG VÀ NÚT LIÊN HỆ NỔI
+   ========================================================= */
+.skills-section {
+    padding-top: 2rem;
+}
+
+.skills-list {
+    display: grid;
+    gap: 1.5rem;
+    width: min(100%, 680px);
+    margin: 0 auto;
+    padding: clamp(1.3rem, 4vw, 2.3rem);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+}
+
+.skill-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.55rem;
+    font-size: 0.94rem;
+    font-weight: 750;
+}
+
+.skill-label span:last-child {
+    color: var(--color-primary);
+}
+
+.skill-track {
+    height: 0.7rem;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #eeedf7;
+}
+
+.skill-progress {
+    display: block;
+    width: var(--skill-level);
+    height: 100%;
+    border-radius: inherit;
+    background: var(--gradient);
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: skill-fill 1.4s cubic-bezier(.2, .7, .2, 1) var(--skill-delay) forwards;
+}
+
+/* scaleX giữ đúng độ dài đích nhưng bắt đầu từ 0% khi trang tải. */
+@keyframes skill-fill {
+    to { transform: scaleX(1); }
+}
+
+.contact-fab {
+    position: fixed;
+    z-index: 9;
+    right: max(1.25rem, env(safe-area-inset-right));
+    bottom: max(1.25rem, env(safe-area-inset-bottom));
+    display: grid;
+    width: 3.6rem;
+    aspect-ratio: 1;
+    place-items: center;
+    border: 1px solid rgb(255 255 255 / 30%);
+    border-radius: 50%;
+    color: #fff;
+    background: var(--gradient);
+    box-shadow: 0 10px 30px rgb(118 98 246 / 35%);
+    font-weight: 750;
+    text-decoration: none;
+    animation: fab-pulse 2.8s ease-in-out infinite;
+    transition: transform var(--ease), box-shadow var(--ease);
+}
+
+.contact-fab > span:first-child {
+    font-size: 1.25rem;
+}
+
+.contact-fab > span:last-child {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.contact-fab:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 34px rgb(118 98 246 / 48%);
+    animation-play-state: paused;
+}
+
+/* Nhịp phập phồng nhẹ bằng bóng đổ, không rung hoặc giật nút. */
+@keyframes fab-pulse {
+    0%, 100% { box-shadow: 0 10px 30px rgb(118 98 246 / 30%); }
+    50% { box-shadow: 0 10px 36px rgb(118 98 246 / 52%); }
+}
+
+.site-footer {
+    padding: 1.5rem 1rem 5.5rem;
+    color: var(--color-muted);
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+.site-footer p {
+    margin: 0;
+}
+
+/* =========================================================
+   GIAO DIỆN TỐI
+   ========================================================= */
+body.dark-mode {
+    color-scheme: dark;
+    --color-bg: #101221;
+    --color-surface: #191c30;
+    --color-text: #f3f3fb;
+    --color-muted: #a7abc0;
+    --color-border: #2b2e45;
+    --shadow-card: 0 18px 55px rgb(0 0 0 / 22%);
+}
+
+body.dark-mode .site-header {
+    border-color: var(--color-border);
+    background: rgb(16 18 33 / 88%);
+}
+
+body.dark-mode .skill-track {
+    background: #292b40;
+}
+
+/* =========================================================
+   RESPONSIVE VÀ TÔN TRỌNG TÙY CHỌN GIẢM CHUYỂN ĐỘNG
+   ========================================================= */
+@media (max-width: 700px) {
+    .site-header {
+        min-height: 68px;
+    }
+
+    .menu-toggle {
+        display: grid;
+    }
+
+    .site-nav {
+        position: absolute;
+        top: calc(100% + 1px);
+        right: 0;
+        left: 0;
+        display: flex;
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0;
+        padding: 0 1.25rem;
+        overflow: hidden;
+        border-bottom: 1px solid var(--color-border);
+        background: var(--color-surface);
+        max-height: 0;
+        opacity: 0;
+        pointer-events: none;
+        transition: max-height 300ms ease, opacity 200ms ease, padding 300ms ease;
+    }
+
+    .site-nav.is-open {
+        max-height: 17rem;
+        padding-top: 0.5rem;
+        padding-bottom: 1rem;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .site-nav > a {
+        padding: 0.8rem 0;
+    }
+
+    .theme-toggle {
+        align-self: flex-start;
+        margin-top: 0.5rem;
+    }
+
+    .hero {
+        min-height: 590px;
+        background-position: 57% center;
+        background-attachment: scroll;
+    }
+
+    .hero-orb-one {
+        top: auto;
+        right: -17%;
+        bottom: 7%;
+    }
+
+    .flip-card {
+        height: 420px;
+    }
+}
+
+@media (max-width: 400px) {
+    .hero h1 {
+        font-size: 2.45rem;
+    }
+
+    .flip-card {
+        height: 400px;
+    }
+
+    .profile-photo {
+        height: 225px;
+    }
+
+    .contact-fab {
+        right: 1rem;
+        bottom: 1rem;
+        width: 3.2rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .skill-progress {
+        transform: scaleX(1);
+    }
+}
