@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AURA MOTORS - Showroom xe ô tô hạng sang hàng đầu Việt Nam. Khám phá các dòng Sedan, SUV, Siêu xe điện đẳng cấp quốc tế với chính sách đặc quyền.">
+    <meta name="keywords" content="xe ô tô, xe hơi hạng sang, siêu xe, ô tô điện, bảng giá xe, showroom ô tô">
+    <meta name="author" content="AURA MOTORS">
+    <title>AURA MOTORS | Tuyệt Tác Ô Tô Hạng Sang & Đẳng Cấp Thượng Lưu</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- AOS (Animate On Scroll) CDN CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="top">
+
+    <!-- Mobile Navigation Toggle Checkbox (Pure CSS Hack) -->
+    <input type="checkbox" id="mobileNavToggle" class="mobile-nav-checkbox sr-only" aria-hidden="true">
+
+    <!-- ==================== HEADER & NAVIGATION ==================== -->
+    <header class="site-header" id="topHeader">
+        <a href="#main-content" class="skip-link">Chuyển đến nội dung chính</a>
+
+        <div class="header-container">
+            <!-- Brand Logo -->
+            <a href="#top" class="brand-logo" aria-label="AURA MOTORS - Trang chủ">
+                <span class="logo-emblem">
+                    <svg viewBox="0 0 40 40" width="32" height="32" fill="none" aria-hidden="true">
+                        <path d="M20 4L35 30H5L20 4Z" stroke="currentColor" stroke-width="2.5"
+                            stroke-linejoin="round" />
+                        <circle cx="20" cy="22" r="6" stroke="currentColor" stroke-width="2" />
+                        <path d="M12 28L20 14L28 28" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </span>
+                <span class="logo-text">AURA <span class="gold-accent">MOTORS</span></span>
+            </a>
+
+            <!-- Main Navigation (Controlled by CSS Checkbox & :target) -->
+            <nav class="main-nav" id="mainNav" aria-label="Điều hướng chính">
+                <div class="mobile-nav-top">
+                    <span class="mobile-nav-title">AURA MOTORS</span>
+                    <label for="mobileNavToggle" class="mobile-close-btn" aria-label="Đóng menu">✕</label>
+                </div>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#top" class="nav-link">
+                            <label for="mobileNavToggle" class="nav-link-text">Trang chủ</label>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#cars" class="nav-link">
+                            <label for="mobileNavToggle" class="nav-link-text">Dòng xe</label>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#features" class="nav-link">
+                            <label for="mobileNavToggle" class="nav-link-text">Tính năng</label>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#pricing" class="nav-link">
+                            <label for="mobileNavToggle" class="nav-link-text">Bảng giá & Ưu đãi</label>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#reviews" class="nav-link">
+                            <label for="mobileNavToggle" class="nav-link-text">Đánh giá</label>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">
+                            <label for="mobileNavToggle" class="nav-link-text">Liên hệ</label>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Header Action & Mobile Menu Toggle Button (Label) -->
+            <div class="header-actions">
+                <a href="#contact" class="btn btn-outline-gold header-cta">Lái thử ngay</a>
+                <label for="mobileNavToggle" class="mobile-toggle" aria-label="Mở hoặc đóng bảng điều hướng">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </label>
+            </div>
+        </div>
+    </header>
+
+    <!-- Overlay backdrop for mobile menu closing -->
+    <label for="mobileNavToggle" class="mobile-nav-backdrop" aria-hidden="true"></label>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main id="main-content">
+
+        <!-- 1. HERO BANNER SECTION -->
+        <section class="hero-section" id="home" aria-label="Khu vực mở đầu">
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    <span>BỘ SƯU TẬP PRESTIGE 2026</span>
+                </div>
+
+                <h1 class="hero-title animate__animated animate__fadeInUp">
+                    Định Hình Đẳng Cấp <br>
+                    <span class="text-gradient">Chinh Phục Tương Lai</span>
+                </h1>
+
+                <p class="hero-description animate__animated animate__fadeIn animate__delay-1s">
+                    Hội tụ tinh hoa cơ khí chuẩn xác từ Đức, phong cách thẩm mỹ vị lai và công nghệ thuần điện đỉnh cao.
+                    Mỗi chặng đường là một trải nghiệm độc bản dành riêng cho quý chủ nhân.
+                </p>
+
+                <div class="hero-buttons animate__animated animate__fadeInUp animate__delay-2s">
+                    <a href="#cars" class="btn btn-primary">
+                        <span>Khám Phá Dòng Xe</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                        </svg>
+                        <span>Đặt Lịch Lái Thử VIP</span>
+                    </a>
+                </div>
+
+                <!-- Hero Vehicle Key Metrics -->
+                <ul class="hero-metrics" aria-label="Thông số nổi bật">
+                    <li class="metric-item">
+                        <strong class="metric-value">2.8s</strong>
+                        <span class="metric-label">Tăng tốc 0 - 100 km/h</span>
+                    </li>
+                    <li class="metric-divider" aria-hidden="true"></li>
+                    <li class="metric-item">
+                        <strong class="metric-value">720<small>hp</small></strong>
+                        <span class="metric-label">Công suất cực đại</span>
+                    </li>
+                    <li class="metric-divider" aria-hidden="true"></li>
+                    <li class="metric-item">
+                        <strong class="metric-value">680<small>km</small></strong>
+                        <span class="metric-label">Tầm vận hành thuần điện</span>
+                    </li>
+                    <li class="metric-divider" aria-hidden="true"></li>
+                    <li class="metric-item">
+                        <strong class="metric-value">5★</strong>
+                        <span class="metric-label">Chuẩn an toàn Euro NCAP</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2. FEATURED CARS SECTION -->
+        <section class="cars-section" id="cars" aria-labelledby="cars-heading">
+            <div class="section-container">
+                <header class="section-header" data-aos="fade-up">
+                    <p class="section-subtitle">DANH MỤC TUYỆT TÁC</p>
+                    <h2 class="section-title" id="cars-heading">Các Dòng Xe Sang Trọng Nổi Bật</h2>
+                    <p class="section-lead">Tuyển tập những cỗ máy dẫn đầu phân khúc, kết hợp hoàn hảo giữa công nghệ số
+                        và sự xa xỉ tột cùng.</p>
+                </header>
+
+                <!-- Pure CSS Filter Radio Inputs -->
+                <input type="radio" name="carCategoryFilter" id="filter-all" class="filter-radio sr-only" checked>
+                <input type="radio" name="carCategoryFilter" id="filter-sedan" class="filter-radio sr-only">
+                <input type="radio" name="carCategoryFilter" id="filter-suv" class="filter-radio sr-only">
+                <input type="radio" name="carCategoryFilter" id="filter-electric" class="filter-radio sr-only">
+
+                <!-- Filter Controls (Labels acting as Buttons) -->
+                <div class="filter-controls" role="tablist" aria-label="Bộ lọc dòng xe" data-aos="fade-up"
+                    data-aos-delay="100">
+                    <label for="filter-all" class="filter-btn" role="tab">Tất Cả</label>
+                    <label for="filter-sedan" class="filter-btn" role="tab">Sedan Hạng Sang</label>
+                    <label for="filter-suv" class="filter-btn" role="tab">SUV Uy Lực</label>
+                    <label for="filter-electric" class="filter-btn" role="tab">Thuần Điện & Hypercar</label>
+                </div>
+
+                <!-- Cars Grid (Tự động tạo giao diện bởi hàm JavaScript renderProducts từ danh sách dữ liệu mẫu) -->
+                <div class="cars-grid" id="carsGrid" data-aos="fade-up" data-aos-delay="200">
+                    <!-- Danh sách xe được tự động tạo và đưa vào đây bởi script.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. KEY FEATURES SECTION -->
+        <section class="features-section" id="features" aria-labelledby="features-heading">
+            <div class="section-container">
+                <header class="section-header" data-aos="fade-up">
+                    <p class="section-subtitle">ĐẶC QUYỀN ĐỈNH CAO</p>
+                    <h2 class="section-title" id="features-heading">Tính Năng & Dịch Vụ Vượt Trội</h2>
+                    <p class="section-lead">Không chỉ dừng lại ở một phương tiện, AURA MOTORS mang đến giải pháp di
+                        chuyển xa xỉ toàn diện cùng chuẩn mực phục vụ 5 sao.</p>
+                </header>
+
+                <div class="features-grid">
+
+                    <!-- Feature 1 -->
+                    <article class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="feature-icon-wrapper">
+                            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                <path d="M9 12l2 2 4-4" />
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Bảo Hành 5 Năm Toàn Diện</h3>
+                        <p class="feature-desc">Bảo dưỡng định kỳ miễn phí tại nhà, cứu hộ khẩn cấp VIP Concierge 24/7
+                            trên toàn quốc không giới hạn số lần.</p>
+                    </article>
+
+                    <!-- Feature 2 -->
+                    <article class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="feature-icon-wrapper">
+                            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                                <line x1="8" y1="21" x2="16" y2="21" />
+                                <line x1="12" y1="17" x2="12" y2="21" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Hệ Sinh Thái Lái Tự Động AI</h3>
+                        <p class="feature-desc">Tích hợp radar Lidar 360 độ và chip xử lý nơ-ron kép, tự nhận diện vật
+                            cản và cảnh báo nguy cơ va chạm trong 0.01 giây.</p>
+                    </article>
+
+                    <!-- Feature 3 -->
+                    <article class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="feature-icon-wrapper">
+                            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polygon
+                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Cá Nhân Hóa Độc Bản Bespoke</h3>
+                        <p class="feature-desc">Tùy biến hơn 200 gam màu sơn ngoại thất, khắc chữ ký vàng 18K và lựa
+                            chọn các chất liệu gỗ quý tự nhiên theo ý gia chủ.</p>
+                    </article>
+
+                    <!-- Feature 4 -->
+                    <article class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="feature-icon-wrapper">
+                            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8" />
+                                <path d="M12 18V6" />
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Đặc Quyền Tài Chính 0% Lãi Suất</h3>
+                        <p class="feature-desc">Hợp tác cùng các ngân hàng quốc tế danh tiếng, cung cấp gói tín dụng đặc
+                            quyền xét duyệt bảo mật trong 2 giờ làm việc.</p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. PRICING & SPECIAL PROMOTION SECTION -->
+        <section class="promotions-section" id="pricing" aria-labelledby="pricing-heading">
+            <div class="section-container">
+                <header class="section-header" data-aos="fade-up">
+                    <p class="section-subtitle">MINH BẠCH & ĐẶC QUYỀN</p>
+                    <h2 class="section-title" id="pricing-heading">Bảng Giá Tham Khảo & Gói Ưu Đãi Tháng Này</h2>
+                    <p class="section-lead">Lựa chọn gói dịch vụ chuyển giao và đồng hành tối ưu quyền lợi tài chính của
+                        bạn.</p>
+                </header>
+
+                <div class="pricing-grid">
+
+                    <!-- Tier 1 -->
+                    <article class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                        <header class="pricing-header">
+                            <h3 class="tier-name">Gói Sở Hữu Tiêu Chuẩn</h3>
+                            <p class="tier-desc">Dành cho cá nhân yêu thích tự do trải nghiệm và linh hoạt tài chính.
+                            </p>
+                            <div class="tier-price-box">
+                                <span class="tier-badge">Trả trước chỉ</span>
+                                <strong class="tier-amount">20%</strong>
+                                <span class="tier-period">Giá trị xe</span>
+                            </div>
+                        </header>
+                        <ul class="pricing-features">
+                            <li><span class="check-icon">✓</span> Tặng gói phủ Ceramic Pro 9H cao cấp</li>
+                            <li><span class="check-icon">✓</span> Bảo hiểm vật chất 02 năm chính hãng</li>
+                            <li><span class="check-icon">✓</span> 3 năm bảo dưỡng miễn phí tại trung tâm</li>
+                            <li class="disabled"><span class="cross-icon">✕</span> Concierge lái xe riêng đưa đón</li>
+                            <li class="disabled"><span class="cross-icon">✕</span> Bộ phụ kiện vàng 18K Bespoke</li>
+                        </ul>
+                        <footer class="pricing-footer">
+                            <a href="#contact" class="btn btn-outline-light w-full">Đăng Ký Tư Vấn</a>
+                        </footer>
+                    </article>
+
+                    <!-- Tier 2: Highlighted -->
+                    <article class="pricing-card featured-tier" data-aos="fade-up" data-aos-delay="200">
+                        <div class="tier-ribbon">ĐƯỢC CHỌN NHIỀU NHẤT</div>
+                        <header class="pricing-header">
+                            <h3 class="tier-name">Gói Đặc Quyền President VIP</h3>
+                            <p class="tier-desc">Giải pháp trọn gói cao cấp nhất trao tay chiếc chìa khóa danh giá.</p>
+                            <div class="tier-price-box">
+                                <span class="tier-badge">Lãi suất chỉ</span>
+                                <strong class="tier-amount">0%</strong>
+                                <span class="tier-period">Cố định trong 24 tháng</span>
+                            </div>
+                        </header>
+                        <ul class="pricing-features">
+                            <li><span class="check-icon gold-check">✓</span> Tặng trạm sạc siêu nhanh 22kW tại tư gia
+                            </li>
+                            <li><span class="check-icon gold-check">✓</span> Bảo hiểm thân vỏ Liberty VIP 5 năm</li>
+                            <li><span class="check-icon gold-check">✓</span> Bảo dưỡng tận nhà & xe dự phòng thay thế
+                            </li>
+                            <li><span class="check-icon gold-check">✓</span> Thẻ hội viên Câu lạc bộ Du thuyền AURA</li>
+                            <li><span class="check-icon gold-check">✓</span> Tùy chọn ốp sợi Carbon rèn & Mâm Forged
+                            </li>
+                        </ul>
+                        <footer class="pricing-footer">
+                            <a href="#contact" class="btn btn-primary w-full">Nhận Ưu Đãi Ngay</a>
+                        </footer>
+                    </article>
+
+                    <!-- Tier 3 -->
+                    <article class="pricing-card" data-aos="fade-up" data-aos-delay="300">
+                        <header class="pricing-header">
+                            <h3 class="tier-name">Chương Trình Thu Đổi Trade-In</h3>
+                            <p class="tier-desc">Thu mua xe sang hiện tại với giá cao nhất thị trường để lên đời dòng
+                                mới.</p>
+                            <div class="tier-price-box">
+                                <span class="tier-badge">Trợ giá lên đến</span>
+                                <strong class="tier-amount">+200 Tr</strong>
+                                <span class="tier-period">So với thẩm định ngoài</span>
+                            </div>
+                        </header>
+                        <ul class="pricing-features">
+                            <li><span class="check-icon">✓</span> Thẩm định minh bạch 176 hạng mục tại nhà</li>
+                            <li><span class="check-icon">✓</span> Giải ngân nhận xe mới trong 24 giờ</li>
+                            <li><span class="check-icon">✓</span> Hỗ trợ toàn bộ thủ tục sang tên đổi biển số</li>
+                            <li><span class="check-icon">✓</span> Tặng gói nâng cấp phim cách nhiệt quang học</li>
+                            <li class="disabled"><span class="cross-icon">✕</span> Xe dự phòng trong thời gian chờ</li>
+                        </ul>
+                        <footer class="pricing-footer">
+                            <a href="#contact" class="btn btn-outline-light w-full">Thẩm Định Ngay</a>
+                        </footer>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. TESTIMONIALS SECTION -->
+        <section class="reviews-section" id="reviews" aria-labelledby="reviews-heading">
+            <div class="section-container">
+                <header class="section-header" data-aos="fade-up">
+                    <p class="section-subtitle">NIỀM TIN THƯỢNG LƯU</p>
+                    <h2 class="section-title" id="reviews-heading">Đánh Giá Từ Khách Hàng Danh Giá</h2>
+                    <p class="section-lead">Sự hài lòng tuyệt đối từ những doanh nhân và nhà lãnh đạo thành đạt là thước
+                        đo giá trị chuẩn mực của AURA MOTORS.</p>
+                </header>
+
+                <div class="reviews-grid">
+
+                    <!-- Review 1 -->
+                    <article class="review-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="review-stars" aria-label="5 trên 5 sao">★★★★★</div>
+                        <blockquote class="review-quote">
+                            "Chiếc Spectre EV thuần điện mang lại cảm giác tĩnh lặng đến kỳ ảo khi tôi đi qua những
+                            tuyến phố đông đúc. Dịch vụ chăm sóc và bàn giao xe tại AURA MOTORS xứng đáng là tiêu chuẩn
+                            vàng của ngành xe sang."
+                        </blockquote>
+                        <figure class="reviewer-figure">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80"
+                                alt="Ảnh chân dung ông Trần Hoàng Long" class="reviewer-avatar" loading="lazy">
+                            <figcaption class="reviewer-info">
+                                <cite class="reviewer-name">Ông Trần Hoàng Long</cite>
+                                <span class="reviewer-title">Chủ tịch Tập đoàn Tài chính Apex Holdings</span>
+                                <span class="car-owned">Chủ sở hữu: <em>Spectre Pure EV</em></span>
+                            </figcaption>
+                        </figure>
+                    </article>
+
+                    <!-- Review 2 -->
+                    <article class="review-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="review-stars" aria-label="5 trên 5 sao">★★★★★</div>
+                        <blockquote class="review-quote">
+                            "Tôi rất ấn tượng với gói cá nhân hóa nội thất da Nappa màu Cognac và các chi tiết khảm gỗ
+                            quý. Đội ngũ kỹ thuật viên am hiểu sâu sắc từng chi tiết nhỏ, khiến tôi hoàn toàn an tâm
+                            trao gửi niềm tin."
+                        </blockquote>
+                        <figure class="reviewer-figure">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80"
+                                alt="Ảnh chân dung bà Nguyễn Vũ Phương Linh" class="reviewer-avatar" loading="lazy">
+                            <figcaption class="reviewer-info">
+                                <cite class="reviewer-name">Bà Nguyễn Vũ Phương Linh</cite>
+                                <span class="reviewer-title">Nhà Sáng Lập & Giám Đốc Nghệ Thuật Horizon Studio</span>
+                                <span class="car-owned">Chủ sở hữu: <em>Phantom Grand Coupe</em></span>
+                            </figcaption>
+                        </figure>
+                    </article>
+
+                    <!-- Review 3 -->
+                    <article class="review-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="review-stars" aria-label="5 trên 5 sao">★★★★★</div>
+                        <blockquote class="review-quote">
+                            "Chiếc Vanguard SUV đưa gia đình tôi băng qua những cung đường đèo hiểm trở với sự êm ái
+                            ngạc nhiên. Cảm ơn chính sách bảo hành tận nhà 24/7 của showroom, rất chuyên nghiệp và chu
+                            đáo."
+                        </blockquote>
+                        <figure class="reviewer-figure">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80"
+                                alt="Ảnh chân dung ông Lê Minh Nhật" class="reviewer-avatar" loading="lazy">
+                            <figcaption class="reviewer-info">
+                                <cite class="reviewer-name">Ông Lê Minh Nhật</cite>
+                                <span class="reviewer-title">CEO Công ty Bất Động Sản Vạn Khang</span>
+                                <span class="car-owned">Chủ sở hữu: <em>Vanguard SUV Platinum</em></span>
+                            </figcaption>
+                        </figure>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. CONTACT & TEST DRIVE BOOKING SECTION -->
+        <section class="contact-section" id="contact" aria-labelledby="contact-heading">
+            <div class="section-container">
+                <div class="contact-wrapper">
+
+                    <!-- Contact Information Column -->
+                    <div class="contact-info-col" data-aos="fade-up" data-aos-delay="100">
+                        <p class="section-subtitle">KẾT NỐI ĐẶC QUYỀN</p>
+                        <h2 class="section-title" id="contact-heading">Trải Nghiệm Thực Tế Cùng Chuyên Gia</h2>
+                        <p class="contact-desc">
+                            Hãy để chúng tôi chuẩn bị sẵn sàng tách cà phê hảo hạng và chiếc xe yêu thích tại phòng chờ
+                            VIP Showroom trước giờ bạn ghé thăm.
+                        </p>
+
+                        <div class="contact-details-list">
+                            <div class="contact-detail-item">
+                                <span class="detail-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                        <circle cx="12" cy="10" r="3" />
+                                    </svg>
+                                </span>
+                                <div>
+                                    <strong class="detail-label">Flagship Showroom</strong>
+                                    <address class="detail-text">Tòa tháp Landmark 81, Vinhomes Central Park, Bình
+                                        Thạnh, TP. Hồ Chí Minh</address>
+                                </div>
+                            </div>
+
+                            <div class="contact-detail-item">
+                                <span class="detail-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                                    </svg>
+                                </span>
+                                <div>
+                                    <strong class="detail-label">Hotline Tư Vấn VIP 24/7</strong>
+                                    <a href="tel:18008899" class="detail-text detail-link">1800 8899 (Miễn phí cước)</a>
+                                </div>
+                            </div>
+
+                            <div class="contact-detail-item">
+                                <span class="detail-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path
+                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                        <polyline points="22,6 12,13 2,6" />
+                                    </svg>
+                                </span>
+                                <div>
+                                    <strong class="detail-label">Hộp Thư Điện Tử</strong>
+                                    <a href="mailto:vip@auramotors.vn"
+                                        class="detail-text detail-link">vip@auramotors.vn</a>
+                                </div>
+                            </div>
+
+                            <div class="contact-detail-item">
+                                <span class="detail-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <polyline points="12 6 12 12 16 14" />
+                                    </svg>
+                                </span>
+                                <div>
+                                    <strong class="detail-label">Thời Gian Mở Cửa</strong>
+                                    <span class="detail-text">Thứ 2 - Chủ Nhật: 08:30 - 21:00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact / Booking Form Column (Native HTML5 validation & Pure CSS modal trigger) -->
+                    <div class="contact-form-col" data-aos="fade-up" data-aos-delay="200">
+                        <form class="booking-form" id="bookingForm" action="#booking-success" method="get">
+                            <h3 class="form-title">Đăng Ký Nhận Báo Giá & Lái Thử</h3>
+                            <p class="form-subtitle">Chuyên viên tư vấn cấp cao sẽ phản hồi quý khách trong vòng 15
+                                phút.</p>
+
+                            <div class="form-group">
+                                <label for="fullName" class="form-label">Họ và tên quý khách *</label>
+                                <input type="text" id="fullName" name="fullName" class="form-input"
+                                    placeholder="Ví dụ: Nguyễn Văn Hoàng" required minlength="2" autocomplete="name">
+                                <span class="form-error-msg">Vui lòng nhập họ và tên của bạn (tối thiểu 2 ký tự).</span>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="phoneNumber" class="form-label">Số điện thoại *</label>
+                                    <input type="tel" id="phoneNumber" name="phoneNumber" class="form-input"
+                                        placeholder="0901 234 567" required pattern="[0-9]{10,11}"
+                                        title="Vui lòng nhập số điện thoại gồm 10 hoặc 11 chữ số" autocomplete="tel">
+                                    <span class="form-error-msg">Vui lòng nhập số điện thoại hợp lệ (10-11 số).</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="emailAddress" class="form-label">Email liên hệ</label>
+                                    <input type="email" id="emailAddress" name="emailAddress" class="form-input"
+                                        placeholder="quykhach@domain.com" autocomplete="email">
+                                    <span class="form-error-msg">Vui lòng nhập đúng định dạng email.</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="selectedCar" class="form-label">Dòng xe quan tâm *</label>
+                                <select id="selectedCar" name="selectedCar" class="form-select" required>
+                                    <option value="" disabled selected>-- Chọn tuyệt tác bạn muốn trải nghiệm --
+                                    </option>
+                                    <option value="phantom">Phantom Grand Coupe (Sedan)</option>
+                                    <option value="spectre">Spectre GT Pure EV (Thuần Điện)</option>
+                                    <option value="vanguard">Vanguard SUV Platinum (SUV)</option>
+                                    <option value="chronos">Chronos SuperSport (Coupe)</option>
+                                    <option value="mayfair">Mayfair Royale Edition (Siêu Sang)</option>
+                                    <option value="matrix">Apex Matrix Dynamic (Sport SUV)</option>
+                                </select>
+                                <span class="form-error-msg">Vui lòng chọn dòng xe bạn quan tâm.</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="customerMessage" class="form-label">Yêu cầu đặc biệt (tùy chọn)</label>
+                                <textarea id="customerMessage" name="customerMessage" class="form-textarea" rows="3"
+                                    placeholder="Ví dụ: Lái thử tại tư gia vào thứ Bảy tuần này..."></textarea>
+                            </div>
+
+                            <div class="form-terms">
+                                <input type="checkbox" id="privacyConsent" name="privacyConsent" required checked>
+                                <label for="privacyConsent">Tôi đồng ý với chính sách bảo mật thông tin khách hàng của
+                                    AURA MOTORS.</label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-submit w-full">
+                                <span>Gửi Yêu Cầu Lái Thử VIP</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                </svg>
+                            </button>
+                            <p class="form-note">Cam kết bảo mật tuyệt đối 100% dữ liệu cá nhân của quý khách hàng.</p>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="site-footer">
+        <div class="footer-container">
+
+            <div class="footer-top-grid">
+
+                <!-- Col 1: Brand Info -->
+                <div class="footer-col brand-col">
+                    <a href="#top" class="brand-logo footer-logo" aria-label="AURA MOTORS">
+                        <span class="logo-emblem">
+                            <svg viewBox="0 0 40 40" width="28" height="28" fill="none" aria-hidden="true">
+                                <path d="M20 4L35 30H5L20 4Z" stroke="currentColor" stroke-width="2.5"
+                                    stroke-linejoin="round" />
+                                <circle cx="20" cy="22" r="6" stroke="currentColor" stroke-width="2" />
+                                <path d="M12 28L20 14L28 28" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </span>
+                        <span class="logo-text">AURA <span class="gold-accent">MOTORS</span></span>
+                    </a>
+                    <p class="footer-brand-desc">
+                        Nhà nhập khẩu và phân phối độc quyền các dòng siêu xe và ô tô thượng lưu hàng đầu thế giới tại
+                        thị trường Việt Nam. Tiên phong sáng tạo chuẩn mực sống đỉnh cao.
+                    </p>
+                    <div class="social-links" aria-label="Mạng xã hội của chúng tôi">
+                        <a href="https://facebook.com" class="social-icon" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook AURA MOTORS">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                <path
+                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com" class="social-icon" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram AURA MOTORS">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                        </a>
+                        <a href="https://youtube.com" class="social-icon" target="_blank" rel="noopener noreferrer"
+                            aria-label="YouTube AURA MOTORS">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                <path
+                                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                            </svg>
+                        </a>
+                        <a href="https://linkedin.com" class="social-icon" target="_blank" rel="noopener noreferrer"
+                            aria-label="LinkedIn AURA MOTORS">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Navigation Links -->
+                <div class="footer-col">
+                    <h4 class="footer-title">Dòng Xe Chủ Đạo</h4>
+                    <ul class="footer-menu">
+                        <li><a href="#cars">Phantom Sedan</a></li>
+                        <li><a href="#cars">Spectre Pure EV</a></li>
+                        <li><a href="#cars">Vanguard SUV</a></li>
+                        <li><a href="#cars">Chronos GT</a></li>
+                        <li><a href="#cars">Mayfair Royale</a></li>
+                        <li><a href="#cars">Xe Đã Qua Sử Dụng Chính Hãng</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Services & Privileges -->
+                <div class="footer-col">
+                    <h4 class="footer-title">Đặc Quyền Khách Hàng</h4>
+                    <ul class="footer-menu">
+                        <li><a href="#features">Chương trình Aura Bespoke</a></li>
+                        <li><a href="#pricing">Gói Tài Chính 0% Lãi Suất</a></li>
+                        <li><a href="#features">Bảo Hành & Cứu Hộ 24/7</a></li>
+                        <li><a href="#pricing">Dịch Vụ Đổi Xe Cũ Lấy Mới</a></li>
+                        <li><a href="#contact">Phòng Chờ Thương Gia VIP</a></li>
+                        <li><a href="#contact">Đăng Ký Chuyến Đi Thử Nghiệm</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Newsletter / Subscription -->
+                <div class="footer-col">
+                    <h4 class="footer-title">Bản Tin Thượng Lưu</h4>
+                    <p class="footer-subtext">Đăng ký để nhận catalogue các mẫu xe độc bản giới hạn và thư mời tham dự
+                        dạ tiệc ra mắt kín.</p>
+                    <form class="newsletter-form" id="newsletterForm" action="#booking-success" method="get">
+                        <div class="newsletter-input-group">
+                            <input type="email" class="newsletter-input" placeholder="Email của quý khách..." required
+                                aria-label="Email nhận bản tin">
+                            <button type="submit" class="btn btn-primary btn-newsletter"
+                                aria-label="Gửi đăng ký bản tin">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                    <p class="hotline-badge">
+                        <span>Tổng Đài VIP Toàn Quốc:</span>
+                        <strong>1800 8899</strong>
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Footer Bottom Line -->
+            <div class="footer-bottom">
+                <p class="copyright-text">
+                    &copy; 2026 <strong>AURA MOTORS VIETNAM</strong>. Mọi quyền được bảo lưu. Thiết kế giao diện xe sang
+                    chuẩn mực HTML5 & CSS3 thuần.
+                </p>
+                <ul class="footer-legal-links">
+                    <li><a href="#privacy">Chính Sách Bảo Mật</a></li>
+                    <li><a href="#terms">Điều Khoản Dịch Vụ</a></li>
+                    <li><a href="#sitemap">Sơ Đồ Website</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Back To Top Button (Pure CSS smooth scroll to #top with scroll-driven animation) -->
+    <a href="#top" class="back-to-top" id="backToTop" aria-label="Cuộn lên đầu trang">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </a>
+
+    <!-- Success Modal Notification (Pure CSS :target Implementation) -->
+    <div class="modal-dialog-target" id="booking-success" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+        <a href="#contact" class="modal-backdrop-link" aria-label="Đóng cửa sổ"></a>
+        <article class="modal-card">
+            <a href="#contact" class="modal-close-btn" aria-label="Đóng thông báo">✕</a>
+            <div class="modal-icon-badge" aria-hidden="true">✓</div>
+            <h3 class="modal-title" id="modalTitle">Đăng Ký Thành Công!</h3>
+            <p class="modal-desc">
+                Cảm ơn quý khách. Yêu cầu đặt lịch trải nghiệm lái thử đặc quyền tại AURA MOTORS đã được ghi nhận thành
+                công trên hệ thống. Chuyên viên tư vấn VIP sẽ liên hệ qua điện thoại trong vòng 15 phút.
+            </p>
+            <a href="#contact" class="btn btn-primary modal-action-btn">Hoàn Tất</a>
+        </article>
+    </div>
+
+    <!-- AOS (Animate On Scroll) CDN Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Khởi tạo AOS Animation -->
+    <script>AOS.init({ duration: 800, once: true, offset: 60 });</script>
+
+    <!-- Script xử lý hiển thị danh sách sản phẩm/dịch vụ động -->
+    <script src="script.js"></script>
+</body>
+
+</html>
